@@ -1,29 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route, Switch } from 'react-router-dom';
+
 import './App.css';
 
-// http://www.omdbapi.com/?apikey=fdbaa0a9&s=&y=2020
-// https://api.themoviedb.org/3/trending/all/week?api_key=bada949f4005b48da2fb91c2ba013808
+import Header from './components/header/header.component';
+import HomePage from './pages/homepage/homepage.component';
+import TrendingDetail from './pages/trending-detail/trending-detail.component';
 
-function App() {
+const App = () => {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <Header />
+      <div className='body'>
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route exact path='/:titleId' component={TrendingDetail} />
+        </Switch>
+      </div>
     </div>
   );
-}
+};
 
 export default App;

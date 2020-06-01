@@ -1,5 +1,3 @@
-# PROJECT 2 README <!-- omit in toc -->
-
 - [Project Planning](#project-planning)
   - [Overview](#overview)
   - [Wireframes](#wireframes)
@@ -22,7 +20,7 @@
 
 **aMDB**
 
-**amDB** is a TV and movie database single page application that allows users to search for a show and see its ratings, reviews, summary, and other details. It also offers lists for what is trending in certain categories and by specific time frames, and a suggestion feature for when you can't decide what to watch.
+**aMDB** is a TV and movie database single page application that allows users to search for a show and see its ratings, reviews, summary, and other details. It also offers lists for what is trending in certain categories and by specific time frames, and a suggestion feature for when you can't decide what to watch.
 
 <br>
 
@@ -57,6 +55,7 @@ aMDB will offer search functionality to find details about the requested movie o
 |   Library    | Description                                                           |
 | :----------: | :-------------------------------------------------------------------- |
 | React Router | _Allow for routing to different pages of the app without page reload_ |
+| Material UI  | _Nice UI component library for more stremalined interface_            |
 |    Axios     | _Nice library for making HTTP requests_                               |
 
 <br>
@@ -66,7 +65,7 @@ aMDB will offer search functionality to find details about the requested movie o
 |    API     | Quality Docs? | Website          | Sample Query                                       |
 | :--------: | :-----------: | :--------------- | :------------------------------------------------- |
 |    OMDB    |      yes      | _omdbapi.com_    | _http://www.omdbapi.com/?apikeyfdbaa0a9&s=&y=2020_ |
-| theMovieDB |      yes      | _themoviedb.org_ | _https://api.themoviedb.org/3/trending/all/week?_  |
+| theMovieDB |      yes      | _themoviedb.org_ | _https://api.themoviedb.org/3/trending/all/week_   |
 
 ```
 {
@@ -123,23 +122,23 @@ src
 |__ components/
       |__ header/
             |__ header.component.jsx
-            |__ header.styles.jsx
+            |__ header.styles.css
       |__ footer/
             |__ footer.component.jsx
-            |__ footer.styles.jsx
+            |__ footer.styles.css
       |__ search/
             |__ search.component.jsx
-            |__ search.styles.jsx
+            |__ search.styles.css
 |__ pages/
       |__ main/
             |__ main.component.jsx
-            |__ main.styles.jsx
+            |__ main.styles.css
       |__ trending/
             |__ trending.component.jsx
-            |__ trending.styles.jsx
+            |__ trending.styles.css
       |__ detail/
             |__ detail.component.jsx
-            |__ detail.styles.jsx
+            |__ detail.styles.css
 ```
 
 <br>
@@ -166,7 +165,7 @@ src
 | Search       |    H     |     7 hrs      |      TBD      |     TBD     |
 | Routing      |    H     |     2 hrs      |      TBD      |     TBD     |
 | HTML         |    H     |      1 hr      |      TBD      |     TBD     |
-| TOTAL        |          |     6 hrs      |     3 hrs     |     TBD     |
+| TOTAL        |          |     30 hrs     |      TBD      |     TBD     |
 
 <br>
 

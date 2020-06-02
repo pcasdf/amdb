@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 
 import { useStyles } from './search.styles';
 
-const SearchBar = () => {
+const SearchBar = props => {
+  const [input, setInput] = useState('');
+
+  const handleChange = e => {
+    setInput(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    props.history.push(`/search/${input}`);
+    setInput('');
+  };
+
   const { search, searchIcon, inputRoot, inputInput } = useStyles();
 
   return (
-    <div className={search}>
+    <form className={search} onSubmit={handleSubmit}>
       <div className={searchIcon}>
         <SearchIcon />
       </div>
       <InputBase
+        value={input}
+        onChange={handleChange}
         placeholder='Search…'
         classes={{
           root: inputRoot,
@@ -21,8 +36,8 @@ const SearchBar = () => {
         }}
         inputProps={{ 'aria-label': 'search' }}
       />
-    </div>
+    </form>
   );
 };
 
-export default SearchBar;
+export default withRouter(SearchBar);

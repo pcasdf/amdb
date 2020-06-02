@@ -7,12 +7,18 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+
 import { useStyles } from './drawer.styles';
 
-const SideDrawer = anchor => {
-  const { list } = useStyles();
+const SideDrawer = ({ toggleDrawer }) => {
+  const { list, icon } = useStyles();
   return (
-    <div className={list} role='presentation'>
+    <div
+      className={list}
+      role='presentation'
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
+    >
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
@@ -25,14 +31,36 @@ const SideDrawer = anchor => {
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button>
+          <ListItemIcon>
+            <img
+              className={icon}
+              alt='iMDB'
+              src={require('../../assets/imdb.png')}
+            />
+          </ListItemIcon>
+          <ListItemText>iMDB</ListItemText>
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <img
+              className={icon}
+              alt='Rotten Tomatoes'
+              src={require('../../assets/tomato.ico')}
+            />
+          </ListItemIcon>
+          <ListItemText>Rotten Tomatoes</ListItemText>
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <img
+              className={icon}
+              alt='Metacritic'
+              src={require('../../assets/metacritic.png')}
+            />
+          </ListItemIcon>
+          <ListItemText>Metacritic</ListItemText>
+        </ListItem>
       </List>
     </div>
   );

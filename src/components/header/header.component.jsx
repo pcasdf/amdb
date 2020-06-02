@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import { useStyles } from './header.styles';
 import Drawer from '@material-ui/core/Drawer';
 
+import { useStyles } from './header.styles';
 import SearchBar from '../search/search.component';
 import SideDrawer from '../drawer/drawer.component';
 
@@ -16,7 +15,7 @@ const Header = () => {
     left: false
   });
 
-  const toggleDrawer = (anchor, open) => event => {
+  const toggleDrawer = open => event => {
     if (
       event.type === 'keydown' &&
       (event.key === 'Tab' || event.key === 'Shift')
@@ -27,36 +26,26 @@ const Header = () => {
     setToggle({ left: open });
   };
 
-  const {
-    root,
-    appBar,
-    toolBar,
-    menuButton,
-    image,
-    searchBar,
-    list,
-    fullList
-  } = useStyles();
+  const { root, appBar, toolBar, menuButton, image, searchBar } = useStyles();
 
   return (
     <div className={root}>
       <AppBar position='static' className={appBar}>
         <Toolbar className={toolBar}>
-          <IconButton
+          <MenuIcon
             edge='start'
             className={menuButton}
             color='inherit'
             aria-label='menu'
+            onClick={toggleDrawer(true)}
+          />
+          <Drawer
+            anchor='left'
+            open={toggle.left}
+            onClose={toggleDrawer(false)}
           >
-            <MenuIcon onClick={toggleDrawer('left', true)} />
-            <Drawer
-              anchor='left'
-              open={toggle.left}
-              onClose={toggleDrawer('left', false)}
-            >
-              <SideDrawer />
-            </Drawer>
-          </IconButton>
+            <SideDrawer toggleDrawer={toggleDrawer} />
+          </Drawer>
           <Link to='/'>
             <img
               alt='aMDB'

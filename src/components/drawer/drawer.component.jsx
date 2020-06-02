@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -23,6 +24,19 @@ const SideDrawer = ({ toggleDrawer }) => {
           <Typography className={header} variant='h3'>
             aMDB
           </Typography>
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
+        <ListItem button>
+          <ListItemText>
+            <Link to='/trending/movie/week'>Trending Movies</Link>
+          </ListItemText>
+        </ListItem>
+        <ListItem button>
+          <ListItemText>
+            <Link to='/trending/tv/week'>Trending TV Series</Link>
+          </ListItemText>
         </ListItem>
       </List>
       <Divider />

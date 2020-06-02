@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
@@ -8,6 +8,7 @@ import { useStyles } from './search.styles';
 
 const SearchBar = props => {
   const [input, setInput] = useState('');
+  let history = useHistory();
 
   const handleChange = e => {
     setInput(e.target.value);
@@ -15,7 +16,7 @@ const SearchBar = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.history.push(`/search/${input}`);
+    history.push(`/search/${input}`);
     setInput('');
   };
 
@@ -40,4 +41,4 @@ const SearchBar = props => {
   );
 };
 
-export default withRouter(SearchBar);
+export default SearchBar;

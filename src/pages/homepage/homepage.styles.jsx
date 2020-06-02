@@ -23,5 +23,9 @@ export const useStyles = makeStyles({
   },
   dropdown: {
     color: 'white'
+  },
+  scroller: {
+    display: 'flex',
+    flexDirection: 'row wrap'
   }
 });

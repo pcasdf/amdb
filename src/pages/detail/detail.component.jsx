@@ -25,6 +25,7 @@ const Detail = ({ match }) => {
     );
     setData(movie.data);
     setDetail(response.data);
+    console.log(response.data);
   }, [id]);
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import './App.css';
 
@@ -9,21 +9,33 @@ import HomePage from './pages/homepage/homepage.component';
 import Detail from './pages/detail/detail.component';
 import SearchResults from './pages/search-results/search-results.component';
 
-const App = () => {
+const App = ({ setTheme }) => {
   const [context, setContext] = useState(null);
 
   return (
     <ResultsContext.Provider value={context} className='app'>
-      <Header />
+      <Header setTheme={setTheme} />
       <div className='body'>
         <Switch>
-          <Route exact path='/'>
-            <HomePage setContext={setContext} />
-          </Route>
+          <Route
+            exact
+            path='/'
+            render={props => <HomePage setContext={setContext} {...props} />}
+          />
           <Route exact path='/:titleId' component={Detail} />
-          <Route exact path='/search/:title'>
-            <SearchResults setContext={setContext} />
-          </Route>
+          <Route
+            exact
+            path='/search/:title'
+            render={props => (
+              <SearchResults setContext={setContext} {...props} />
+            )}
+          />
+          <Route
+            exact
+            path='/trending/:category/:time'
+            render={props => <HomePage setContext={setContext} {...props} />}
+          />
+          <Redirect to='/' />
         </Switch>
       </div>
     </ResultsContext.Provider>

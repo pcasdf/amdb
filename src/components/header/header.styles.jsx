@@ -12,8 +12,5 @@ export const useStyles = makeStyles(theme => ({
   },
   appBar: {
     backgroundColor: '#112244'
-  },
-  search: {
-    justifySelf: 'center'
   }
 }));

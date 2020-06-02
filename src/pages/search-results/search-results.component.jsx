@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Grid from '@material-ui/core/Grid';
@@ -53,4 +53,4 @@ const SearchResults = ({ match, setContext }) => {
   );
 };
 
-export default withRouter(SearchResults);
+export default SearchResults;

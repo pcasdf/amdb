@@ -5,15 +5,26 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
+import Switch from '@material-ui/core/Switch';
+import { withStyles } from '@material-ui/core/styles';
+import { grey } from '@material-ui/core/colors';
 
 import { useStyles } from './header.styles';
 import SearchBar from '../search/search.component';
 import SideDrawer from '../drawer/drawer.component';
 
-const Header = () => {
+const Header = ({ setTheme }) => {
   const [toggle, setToggle] = useState({
     left: false
   });
+  const [state, setState] = useState({
+    checked: true
+  });
+
+  const handleChange = event => {
+    setState({ checked: event.target.checked });
+    setTheme(prev => !prev);
+  };
 
   const toggleDrawer = open => event => {
     if (
@@ -25,6 +36,20 @@ const Header = () => {
 
     setToggle({ left: open });
   };
+
+  const GraySwitch = withStyles({
+    switchBase: {
+      color: grey[300],
+      '&$checked': {
+        color: grey[500]
+      },
+      '&$checked + $track': {
+        backgroundColor: grey[500]
+      }
+    },
+    checked: {},
+    track: {}
+  })(Switch);
 
   const { root, appBar, toolBar, menuButton, image, searchBar } = useStyles();
 
@@ -62,6 +87,18 @@ const Header = () => {
             }}
           >
             <SearchBar className={searchBar} />
+          </div>
+          <div
+            style={{
+              position: 'absolute',
+              right: '2%'
+            }}
+          >
+            <GraySwitch
+              checked={state.checked}
+              onChange={handleChange}
+              name='checkedA'
+            />
           </div>
         </Toolbar>
       </AppBar>

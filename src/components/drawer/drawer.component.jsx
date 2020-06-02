@@ -5,13 +5,12 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import Typography from '@material-ui/core/Typography';
 
 import { useStyles } from './drawer.styles';
 
 const SideDrawer = ({ toggleDrawer }) => {
-  const { list, icon } = useStyles();
+  const { header, list, icon } = useStyles();
   return (
     <div
       className={list}
@@ -20,14 +19,11 @@ const SideDrawer = ({ toggleDrawer }) => {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem>
+          <Typography className={header} variant='h3'>
+            aMDB
+          </Typography>
+        </ListItem>
       </List>
       <Divider />
       <List>

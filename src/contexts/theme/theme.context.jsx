@@ -1,8 +1,38 @@
-import { createContext } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
-const ThemeContext = createContext({
-  bg: 'white',
-  font: 'black'
+export const ThemeContext = createContext({
+  theme: {
+    bg: 'white',
+    font: 'black'
+  },
+  toggle: () => {}
 });
 
-export default ThemeContext;
+const ThemeContextProvider = props => {
+  const [theme, setTheme] = useState({
+    bg: 'white',
+    font: 'black'
+  });
+
+  const toggleTheme = () => {
+    if (theme.bg === 'white') {
+      setTheme({
+        bg: 'gray',
+        font: 'white'
+      });
+    } else {
+      setTheme({
+        bg: 'white',
+        font: 'black'
+      });
+    }
+  };
+
+  return (
+    <ThemeContext.Provider value={{ toggle: toggleTheme, theme: theme }}>
+      {props.children}
+    </ThemeContext.Provider>
+  );
+};
+
+export default ThemeContextProvider;

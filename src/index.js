@@ -5,12 +5,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import { makeStyles } from '@material-ui/core/styles';
-import ThemeContext from './contexts/theme/theme.context';
+import ThemeContextProvider, {
+  ThemeContext
+} from './contexts/theme/theme.context';
 import * as serviceWorker from './serviceWorker';
 
 const Body = () => {
-  const context = useContext(ThemeContext);
-  const [theme, setTheme] = useState(context);
+  const { theme } = useContext(ThemeContext);
 
   const useStyles = makeStyles({
     body: {
@@ -23,16 +24,16 @@ const Body = () => {
 
   return (
     <div className={classes.body}>
-      <ThemeContext.Provider value={theme}>
-        <App setTheme={setTheme} />
-      </ThemeContext.Provider>
+      <App />
     </div>
   );
 };
 
 ReactDOM.render(
   <Router>
-    <Body />
+    <ThemeContextProvider>
+      <Body />
+    </ThemeContextProvider>
   </Router>,
   document.getElementById('root')
 );

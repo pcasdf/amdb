@@ -8,6 +8,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import { useStyles } from './drawer.styles';
+import ListEntry from '../list-entry/list-entry.component';
 
 const SideDrawer = ({ toggleDrawer }) => {
   const { list, icon, logo } = useStyles();
@@ -29,16 +30,24 @@ const SideDrawer = ({ toggleDrawer }) => {
       </List>
       <Divider />
       <List>
-        <ListItem button>
-          <ListItemText>
-            <Link to='/trending/movie/week'>Trending Movies</Link>
-          </ListItemText>
-        </ListItem>
-        <ListItem button>
-          <ListItemText>
-            <Link to='/trending/tv/week'>Trending TV Series</Link>
-          </ListItemText>
-        </ListItem>
+        <ListEntry title='Trending Movies' url='/trending/movie/week' />
+        <ListEntry title='Trending TV Series' url='/trending/tv/week' />
+      </List>
+      <Divider />
+      <List>
+        <ListEntry title='Action' url='/genre/action/28' />
+        <ListEntry title='Adventure' url='/genre/adventure/12' />
+        <ListEntry title='Animation' url='/genre/animation/16' />
+        <ListEntry title='Comedy' url='/genre/comedy/35' />
+        <ListEntry title='Documentary' url='/genre/documentary/99' />
+        <ListEntry title='Drama' url='/genre/drama/18' />
+        <ListEntry title='Family' url='/genre/family/10751' />
+        <ListEntry title='Fantasy' url='/genre/fantasy/14' />
+        <ListEntry title='Horror' url='/genre/horror/27' />
+        <ListEntry title='Mystery' url='/genre/mystery/9648' />
+        <ListEntry title='Romance' url='/genre/romance/10749' />
+        <ListEntry title='Science Fiction' url='/genre/scifi/878' />
+        <ListEntry title='Thriller' url='/genre/thriller/53' />
       </List>
       <Divider />
       <List>

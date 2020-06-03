@@ -1,70 +1,77 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import Loader from 'react-loader-spinner';
 
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import { useStyles } from './homepage.styles';
+import { ResultsContext } from '../../contexts/results/results.context';
+import Carousel from '../../components/carousel/carousel.component';
 
-import ThemeContext from '../../contexts/theme/theme.context';
-import Card from '../../components/card/card.component';
-import Filter from '../../components/filter/filter.component';
+const HomePage = () => {
+  const [movies, setMovies] = useState();
+  const [tvSeries, setTvSeries] = useState();
+  const { context, setContext } = useContext(ResultsContext);
 
-const HomePage = ({ setContext }) => {
-  const [data, setData] = useState([]);
-  const [page, setPage] = useState(1);
-  const { theme } = useContext(ThemeContext);
-  const { category = 'all', time = 'week' } = useParams();
-
-  const fetchData = useCallback(async (category, time, page) => {
+  const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/trending/${category}/${time}?api_key=bada949f4005b48da2fb91c2ba013808&page=${page}`
+      const moviesResponse = await axios.get(
+        `https://api.themoviedb.org/3/trending/movie/week?api_key=bada949f4005b48da2fb91c2ba013808&page=1`
       );
-      setData(prev => [...prev, ...response.data.results]);
-      setPage(prev => prev + 1);
+      const tvSeriesResponse = await axios.get(
+        `https://api.themoviedb.org/3/trending/tv/week?api_key=bada949f4005b48da2fb91c2ba013808&page=1`
+      );
+      setMovies(moviesResponse.data.results);
+      setTvSeries(tvSeriesResponse.data.results);
+      console.log(moviesResponse);
     } catch (err) {
       console.log('Something went wrong.');
     }
   }, []);
 
   useEffect(() => {
-    setPage(1);
-    setData([]);
-    fetchData(category, time, 1);
-  }, [category, time, fetchData]);
+    fetchData();
+    setContext({
+      current: null,
+      movies: movies,
+      tv: tvSeries
+    });
+  }, []);
 
-  useEffect(() => {
-    setContext(data);
-  }, [data, setContext]);
+  const { title, subject, titleContainer, sliderContainer } = useStyles();
 
   return (
     <div className='homepage'>
-      <InfiniteScroll
-        style={{ margin: '0 auto', textAlign: 'center' }}
-        dataLength={data.length}
-        next={() => fetchData(category, time, page)}
-        hasMore={true}
-        threshold={0}
-        loader={
-          <Loader
-            type='ThreeDots'
-            color='#00BFFF'
-            height={100}
-            width={100}
-            timeout={3000}
-          />
-        }
-      >
-        <Grid container spacing={3}>
-          <Filter />
-          {data.map(item => (
-            <Card key={item.id} theme={theme} {...item} />
-          ))}
+      <Grid container className={subject}>
+        <Grid item xs={12} className={titleContainer}>
+          <Typography variant='h5' className={title}>
+            Trending Movies
+          </Typography>
         </Grid>
-      </InfiniteScroll>
+        <Grid
+          item
+          xs={12}
+          className={sliderContainer}
+          onClick={() => setContext({ ...context, current: movies })}
+        >
+          <Carousel list={movies} details />
+        </Grid>
+      </Grid>
+      <Grid container className={subject}>
+        <Grid item xs={12} className={titleContainer}>
+          <Typography variant='h5' className={title}>
+            Trending TV Series
+          </Typography>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          className={sliderContainer}
+          onClick={() => setContext({ ...context, current: tvSeries })}
+        >
+          <Carousel list={tvSeries} details />
+        </Grid>
+      </Grid>
     </div>
   );
 };

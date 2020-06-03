@@ -6,18 +6,14 @@ import ChevronLeftRoundedIcon from '@material-ui/icons/ChevronLeftRounded';
 import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
 
 import { useStyles } from './carousel.styles';
-import ResultsContext from '../../contexts/results/results.context';
 import Slider from '../slider/slider.component';
 
-const Carousel = () => {
+const Carousel = ({ list, details }) => {
   const [index, setIndex] = useState([0, 5]);
-  const list = useContext(ResultsContext);
 
   const handleChange = direction => {
     if (direction) {
-      if (index[0] < 15) {
-        setIndex(prev => [prev[0] + 5, prev[1] + 5]);
-      }
+      setIndex(prev => [prev[0] + 5, prev[1] + 5]);
     } else {
       if (index[0] > 0) {
         setIndex(prev => [prev[0] - 5, prev[1] - 5]);
@@ -25,19 +21,21 @@ const Carousel = () => {
     }
   };
 
-  const { overhead, icon, arrow } = useStyles();
+  const { overhead, icon, arrow, slider } = useStyles();
 
   return (
-    <Grid container spacing={1} className={overhead}>
+    <Grid container className={overhead}>
       <Grid item sm={1} className={arrow}>
-        <ChevronLeftRoundedIcon
-          className={icon}
-          onClick={() => handleChange(0)}
-        />
+        {index[0] > 0 && (
+          <ChevronLeftRoundedIcon
+            className={icon}
+            onClick={() => handleChange(0)}
+          />
+        )}
       </Grid>
-      <Grid item sm={10}>
+      <Grid item sm={10} className={slider}>
         <SimpleViewSlider>
-          <Slider key={index[0]} list={list} index={index} />
+          <Slider key={index[0]} list={list} index={index} details={details} />
         </SimpleViewSlider>
       </Grid>
       <Grid item sm={1} className={arrow}>

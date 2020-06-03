@@ -5,12 +5,14 @@ import Loader from 'react-loader-spinner';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import ThemeContext from '../../contexts/theme/theme.context';
+import { ThemeContext } from '../../contexts/theme/theme.context';
+import { ResultsContext } from '../../contexts/results/results.context';
 import Card from '../../components/card/card.component';
 
-const SearchResults = ({ match, setContext }) => {
+const SearchResults = ({ match }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { setContext } = useContext(ResultsContext);
   const { theme } = useContext(ThemeContext);
   const title = match.params.title;
 
@@ -32,8 +34,7 @@ const SearchResults = ({ match, setContext }) => {
   }, [fetchData]);
 
   useEffect(() => {
-    setContext(data);
-    console.log(data);
+    setContext({ current: data });
   }, [data, setContext]);
 
   return (

@@ -10,12 +10,12 @@ import { withStyles } from '@material-ui/core/styles';
 import { grey } from '@material-ui/core/colors';
 
 import { useStyles } from './header.styles';
+import { ThemeContext } from '../../contexts/theme/theme.context';
 import SearchBar from '../search/search.component';
 import SideDrawer from '../drawer/drawer.component';
-import ThemeContext from '../../contexts/theme/theme.context';
 
-const Header = ({ setTheme }) => {
-  const theme = useContext(ThemeContext);
+const Header = () => {
+  const { toggle: toggleTheme } = useContext(ThemeContext);
   const [toggle, setToggle] = useState({
     left: false
   });
@@ -25,17 +25,7 @@ const Header = ({ setTheme }) => {
 
   const handleChange = event => {
     setState({ checked: event.target.checked });
-    if (theme.bg === 'white') {
-      setTheme({
-        bg: '#202020',
-        font: 'white'
-      });
-    } else {
-      setTheme({
-        bg: 'white',
-        font: 'black'
-      });
-    }
+    toggleTheme();
   };
 
   const toggleDrawer = open => event => {

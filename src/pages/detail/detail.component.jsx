@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useContext } from 'react';
 import axios from 'axios';
 
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
 import { useStyles } from './detail.styles';
+import { ResultsContext } from '../../contexts/results/results.context';
 import Poster from '../../components/poster/poster.component';
 import Ratings from '../../components/ratings/ratings.component';
 import Text from '../../components/text/text.component';
@@ -14,6 +15,9 @@ import Video from '../../components/video/video.component';
 const Detail = ({ match }) => {
   const [data, setData] = useState();
   const [detail, setDetail] = useState();
+  const {
+    context: { current }
+  } = useContext(ResultsContext);
 
   const id = match.params.titleId;
 
@@ -24,9 +28,13 @@ const Detail = ({ match }) => {
     const response = await axios.get(
       `http://www.omdbapi.com/?apikey=fdbaa0a9&i=${movie.data.imdb_id}`
     );
+    const videos = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=bada949f4005b48da2fb91c2ba013808`
+    );
     setData(movie.data);
     setDetail(response.data);
-    console.log(response.data);
+    console.log(movie.data);
+    console.log(videos);
   }, [id]);
 
   useEffect(() => {
@@ -37,7 +45,7 @@ const Detail = ({ match }) => {
 
   return (
     <div>
-      <Carousel />
+      <Carousel list={current} details={false} />
       <div className={content}>
         {data && detail && (
           <Grid container spacing={3} className={grid}>

@@ -1,5 +1,22 @@
-import { createContext } from 'react';
+import React, { createContext, useState } from 'react';
 
-const ResultsContext = createContext();
+export const ResultsContext = createContext({
+  context: {
+    current: null
+  },
+  setContext: () => {}
+});
 
-export default ResultsContext;
+const ResultsContextProvider = props => {
+  const [context, setContext] = useState({
+    current: null
+  });
+
+  return (
+    <ResultsContext.Provider value={{ context, setContext }}>
+      {props.children}
+    </ResultsContext.Provider>
+  );
+};
+
+export default ResultsContextProvider;

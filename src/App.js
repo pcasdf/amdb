@@ -10,37 +10,23 @@ import Trending from './pages/trending/trending.component';
 import GenrePage from './pages/genre/genre.component';
 import Detail from './pages/detail/detail.component';
 import SearchResults from './pages/search-results/search-results.component';
+import Footer from './components/footer/footer.component';
 
 const App = () => (
   <ResultsContextProvider className='app'>
     <Header />
     <div className='body'>
       <Switch>
-        <Route exact path='/' render={props => <HomePage {...props} />} />
+        <Route exact path='/' component={HomePage} />
         <Route exact path='/:titleId' component={Detail} />
-        <Route
-          exact
-          path='/search/:title'
-          render={props => <SearchResults {...props} />}
-        />
-        <Route
-          exact
-          path='/trending'
-          render={props => <Trending {...props} />}
-        />
-        <Route
-          exact
-          path='/trending/:category/:time'
-          render={props => <Trending {...props} />}
-        />
-        <Route
-          exact
-          path='/genre/:genre/:id'
-          render={props => <GenrePage {...props} />}
-        />
+        <Route exact path='/search/:title' component={SearchResults} />
+        <Route exact path='/trending' component={Trending} />
+        <Route exact path='/trending/:category/:time' component={Trending} />
+        <Route exact path='/genre/:genre/:id' component={GenrePage} />
         <Redirect to='/' />
       </Switch>
     </div>
+    <Footer />
   </ResultsContextProvider>
 );
 

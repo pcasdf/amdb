@@ -39,10 +39,12 @@ const Carousel = ({ list, details }) => {
         </SimpleViewSlider>
       </Grid>
       <Grid item sm={1} className={arrow}>
-        <ChevronRightRoundedIcon
-          className={icon}
-          onClick={() => handleChange(1)}
-        />
+        {list && (
+          <ChevronRightRoundedIcon
+            className={icon}
+            onClick={() => handleChange(1)}
+          />
+        )}
       </Grid>
     </Grid>
   );

@@ -5,7 +5,7 @@ export const useStyles = makeStyles({
     marginBottom: '20px'
   },
   label: {
-    fontSize: '1.2rem',
+    fontSize: '0.9rem',
     display: 'flex',
     justifyContent: 'space-between'
   },

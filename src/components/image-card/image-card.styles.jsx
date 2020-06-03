@@ -8,6 +8,9 @@ export const useStyles = makeStyles({
   },
   media: {
     width: '100%',
-    height: 'auto'
+    height: 'auto',
+    '&:hover': {
+      opacity: '0.7'
+    }
   }
 });

@@ -16,7 +16,7 @@ const Trending = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const { setContext } = useContext(ResultsContext);
-  const { category = 'all', time = 'week' } = useParams();
+  const { category, time } = useParams();
 
   const fetchData = useCallback(async (category, time, page) => {
     try {

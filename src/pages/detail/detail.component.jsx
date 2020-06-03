@@ -15,6 +15,8 @@ import Video from '../../components/video/video.component';
 const Detail = ({ match }) => {
   const [data, setData] = useState();
   const [detail, setDetail] = useState();
+  const [images, setImages] = useState();
+  const [index, setIndex] = useState(1);
   const {
     context: { current }
   } = useContext(ResultsContext);
@@ -28,13 +30,12 @@ const Detail = ({ match }) => {
     const response = await axios.get(
       `http://www.omdbapi.com/?apikey=fdbaa0a9&i=${movie.data.imdb_id}`
     );
-    const videos = await axios.get(
-      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=bada949f4005b48da2fb91c2ba013808`
+    const images = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id}/images?api_key=bada949f4005b48da2fb91c2ba013808`
     );
     setData(movie.data);
     setDetail(response.data);
-    console.log(movie.data);
-    console.log(videos);
+    setImages(images.data.backdrops);
   }, [id]);
 
   useEffect(() => {
@@ -45,7 +46,6 @@ const Detail = ({ match }) => {
 
   return (
     <div>
-      <Carousel list={current} details={false} />
       <div className={content}>
         {data && detail && (
           <Grid container spacing={3} className={grid}>
@@ -74,6 +74,27 @@ const Detail = ({ match }) => {
           </Grid>
         )}
       </div>
+      <div className='images' style={{ marginTop: '100px' }}>
+        <Grid container>
+          <Grid item md={6}>
+            Trailers
+          </Grid>
+          <Grid item md={6}>
+            Images
+            {images &&
+              images.map(
+                ({ file_path }, idx) =>
+                  idx === 1 && (
+                    <img
+                      style={{ width: '100%' }}
+                      src={`https://image.tmdb.org/t/p/w500${file_path}`}
+                    />
+                  )
+              )}
+          </Grid>
+        </Grid>
+      </div>
+      <Carousel list={current} details={false} />
     </div>
   );
 };

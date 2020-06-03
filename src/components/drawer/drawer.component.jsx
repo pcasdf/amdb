@@ -6,12 +6,11 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
 
 import { useStyles } from './drawer.styles';
 
 const SideDrawer = ({ toggleDrawer }) => {
-  const { header, list, icon } = useStyles();
+  const { list, icon, logo } = useStyles();
   return (
     <div
       className={list}
@@ -21,9 +20,11 @@ const SideDrawer = ({ toggleDrawer }) => {
     >
       <List>
         <ListItem>
-          <Typography className={header} variant='h3'>
-            aMDB
-          </Typography>
+          <img
+            className={logo}
+            src={require('../../assets/logo-grey.png')}
+            alt='logo'
+          />
         </ListItem>
       </List>
       <Divider />

@@ -9,6 +9,7 @@ import Poster from '../../components/poster/poster.component';
 import Ratings from '../../components/ratings/ratings.component';
 import Text from '../../components/text/text.component';
 import Carousel from '../../components/carousel/carousel.component';
+import Video from '../../components/video/video.component';
 
 const Detail = ({ match }) => {
   const [data, setData] = useState();
@@ -32,10 +33,10 @@ const Detail = ({ match }) => {
     fetchDetails();
   }, [fetchDetails]);
 
-  const { body, content, title, description, details, grid } = useStyles();
+  const { content, title, description, details, grid } = useStyles();
 
   return (
-    <div className={body}>
+    <div>
       <Carousel />
       <div className={content}>
         {data && detail && (
@@ -58,6 +59,9 @@ const Detail = ({ match }) => {
               <Text title='Director' content={detail.Director} />
               <Text title='Writers' content={detail.Writer} />
               <Text title='Summary' content={detail.Plot} />
+            </Grid>
+            <Grid item>
+              <Video />
             </Grid>
           </Grid>
         )}

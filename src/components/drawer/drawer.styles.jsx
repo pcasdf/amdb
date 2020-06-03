@@ -9,5 +9,9 @@ export const useStyles = makeStyles({
   },
   icon: {
     height: '25px'
+  },
+  logo: {
+    height: '100px',
+    margin: '0 auto'
   }
 });

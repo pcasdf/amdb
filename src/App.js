@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 import './App.css';
 
@@ -16,27 +16,23 @@ const App = ({ setTheme }) => {
     <ResultsContext.Provider value={context} className='app'>
       <Header setTheme={setTheme} />
       <div className='body'>
-        <Switch>
-          <Route
-            exact
-            path='/'
-            render={props => <HomePage setContext={setContext} {...props} />}
-          />
-          <Route exact path='/:titleId' component={Detail} />
-          <Route
-            exact
-            path='/search/:title'
-            render={props => (
-              <SearchResults setContext={setContext} {...props} />
-            )}
-          />
-          <Route
-            exact
-            path='/trending/:category/:time'
-            render={props => <HomePage setContext={setContext} {...props} />}
-          />
-          <Redirect to='/' />
-        </Switch>
+        <Route
+          exact
+          path='/'
+          render={props => <HomePage setContext={setContext} {...props} />}
+        />
+        <Route exact path='/:titleId' component={Detail} />
+        <Route
+          exact
+          path='/search/:title'
+          render={props => <SearchResults setContext={setContext} {...props} />}
+        />
+        <Route
+          exact
+          path='/trending/:category/:time'
+          render={props => <HomePage setContext={setContext} {...props} />}
+        />
+        <Redirect to='/' />
       </div>
     </ResultsContext.Provider>
   );

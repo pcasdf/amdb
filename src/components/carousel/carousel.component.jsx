@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import SimpleViewSlider from 'react-view-slider/simple';
 
 import Grid from '@material-ui/core/Grid';
 import ChevronLeftRoundedIcon from '@material-ui/icons/ChevronLeftRounded';
@@ -7,7 +7,7 @@ import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
 
 import { useStyles } from './carousel.styles';
 import ResultsContext from '../../contexts/results/results.context';
-import ImageCard from '../../components/image-card/image-card.component';
+import Slider from '../slider/slider.component';
 
 const Carousel = () => {
   const [index, setIndex] = useState([0, 5]);
@@ -25,30 +25,27 @@ const Carousel = () => {
     }
   };
 
-  const { overhead, icon } = useStyles();
+  const { overhead, icon, arrow } = useStyles();
 
   return (
-    <Grid container spacing={2} className={overhead}>
-      <ChevronLeftRoundedIcon
-        className={icon}
-        onClick={() => handleChange(0)}
-      />
-      {list &&
-        list.map(
-          ({ id, poster_path }, idx) =>
-            idx >= index[0] &&
-            idx < index[1] && (
-              <Grid item sm={2} xs={1} key={id}>
-                <Link to={`/${id}`}>
-                  <ImageCard img={poster_path} />
-                </Link>
-              </Grid>
-            )
-        )}
-      <ChevronRightRoundedIcon
-        className={icon}
-        onClick={() => handleChange(1)}
-      />
+    <Grid container spacing={1} className={overhead}>
+      <Grid item sm={1} className={arrow}>
+        <ChevronLeftRoundedIcon
+          className={icon}
+          onClick={() => handleChange(0)}
+        />
+      </Grid>
+      <Grid item sm={10}>
+        <SimpleViewSlider>
+          <Slider key={index[0]} list={list} index={index} />
+        </SimpleViewSlider>
+      </Grid>
+      <Grid item sm={1} className={arrow}>
+        <ChevronRightRoundedIcon
+          className={icon}
+          onClick={() => handleChange(1)}
+        />
+      </Grid>
     </Grid>
   );
 };

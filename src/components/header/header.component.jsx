@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -12,8 +12,10 @@ import { grey } from '@material-ui/core/colors';
 import { useStyles } from './header.styles';
 import SearchBar from '../search/search.component';
 import SideDrawer from '../drawer/drawer.component';
+import ThemeContext from '../../contexts/theme/theme.context';
 
 const Header = ({ setTheme }) => {
+  const theme = useContext(ThemeContext);
   const [toggle, setToggle] = useState({
     left: false
   });
@@ -23,7 +25,17 @@ const Header = ({ setTheme }) => {
 
   const handleChange = event => {
     setState({ checked: event.target.checked });
-    setTheme(prev => !prev);
+    if (theme.bg === 'white') {
+      setTheme({
+        bg: '#202020',
+        font: 'white'
+      });
+    } else {
+      setTheme({
+        bg: 'white',
+        font: 'black'
+      });
+    }
   };
 
   const toggleDrawer = open => event => {

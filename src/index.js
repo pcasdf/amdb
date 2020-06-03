@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -9,20 +9,13 @@ import ThemeContext from './contexts/theme/theme.context';
 import * as serviceWorker from './serviceWorker';
 
 const Body = () => {
-  const [theme, setTheme] = useState(false);
+  const context = useContext(ThemeContext);
+  const [theme, setTheme] = useState(context);
 
-  let bg, font;
-  if (theme) {
-    bg = '#111111';
-    font = 'white';
-  } else {
-    bg = 'white';
-    font = 'black';
-  }
   const useStyles = makeStyles({
     body: {
-      backgroundColor: bg,
-      color: font
+      backgroundColor: theme.bg,
+      color: theme.font
     }
   });
 

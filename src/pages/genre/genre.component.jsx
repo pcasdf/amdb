@@ -51,12 +51,12 @@ const GenrePage = () => {
     setContext({ current: data, movies: null, tv: null });
   }, [data, setContext]);
 
-  const { body, header, sidebar, content } = useStyles();
+  const { body, header, content } = useStyles();
   return (
     <div className={body}>
       <Grid container>
         <Hidden smDown>
-          <Grid item md={2} className={sidebar}>
+          <Grid item md={2}>
             <Sidebar />
           </Grid>
         </Hidden>

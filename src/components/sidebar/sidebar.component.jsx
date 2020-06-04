@@ -7,6 +7,11 @@ const Sidebar = () => {
   const { root, title } = useStyles();
   return (
     <div className={root}>
+      <span className={title}>TRENDING</span>
+      <div style={{ marginTop: '10px' }}>
+        <SidebarItem title='Movies' url='/trending/movie/week' />
+        <SidebarItem title='TV Series' url='/trending/tv/week' />
+      </div>
       <span className={title}>GENRES</span>
       <div style={{ marginTop: '10px' }}>
         <SidebarItem title='Action' url='/genre/action/28' />

@@ -9,7 +9,7 @@ export const useStyles = makeStyles({
     borderRadius: '5px',
     fontWeight: '500',
     '&:hover': {
-      backgroundColor: '#22a',
+      backgroundColor: '#248',
       cursor: 'pointer'
     }
   },

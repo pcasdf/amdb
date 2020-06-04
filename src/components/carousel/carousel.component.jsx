@@ -45,7 +45,7 @@ const Carousel = ({ list, details }) => {
         </SimpleViewSlider>
       </Grid>
       <Grid item sm={1} className={arrow}>
-        {list && (
+        {list && index[0] < 15 && (
           <ChevronRightRoundedIcon
             className={icon}
             onClick={() => handleChange(1)}

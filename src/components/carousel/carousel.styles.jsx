@@ -10,15 +10,14 @@ export const useStyles = makeStyles({
     margin: '0 auto'
   },
   icon: {
-    transform: 'scale(1.6)',
-    color: '#112244',
+    transform: 'scale(2.2)',
+    color: '#aaa',
     height: '30px',
-    border: '1px solid',
     borderRadius: '2px',
     position: 'relative',
     top: '35%',
     '&:hover': {
-      color: '#2288FF'
+      color: '#248'
     }
   },
   slider: {

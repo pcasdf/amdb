@@ -17,7 +17,7 @@ const ThemeContextProvider = ({ children }) => {
   const toggleTheme = () => {
     if (theme.bg === 'white') {
       setTheme({
-        bg: 'gray',
+        bg: '#222222',
         font: 'white'
       });
     } else {

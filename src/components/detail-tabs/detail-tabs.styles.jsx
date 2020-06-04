@@ -8,9 +8,6 @@ export const useStyles = makeStyles(theme => ({
   padding: {
     padding: theme.spacing(3)
   },
-  tabs: {
-    backgroundColor: 'white'
-  },
   image: {
     width: '100%'
   }

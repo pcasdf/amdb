@@ -4,5 +4,9 @@ export const useStyles = makeStyles({
   root: {
     width: '100%',
     paddingLeft: '20px'
+  },
+  title: {
+    fontWeight: '500',
+    color: '#124'
   }
 });

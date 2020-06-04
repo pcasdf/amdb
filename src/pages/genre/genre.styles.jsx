@@ -9,6 +9,9 @@ export const useStyles = makeStyles({
     marginBottom: '1rem'
   },
   content: {
-    width: '80%'
+    width: '80%',
+    '@media (max-width: 950px)': {
+      marginLeft: '10vw'
+    }
   }
 });

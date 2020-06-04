@@ -5,7 +5,6 @@ export const useStyles = makeStyles({
     margin: '0 auto',
     display: 'flex',
     padding: '30px 0',
-    borderBottom: '1px solid #112244',
     background: '#546c9e',
     color: 'white',
     width: '100%'

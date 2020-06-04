@@ -9,7 +9,7 @@ import Video from '../video/video.component';
 import Carousel from '../carousel/carousel.component';
 
 const DetailTabs = ({ images, recs, trailer }) => {
-  const { image, tabs, padding, video, carousel } = useStyles();
+  const { image, tabs, padding, video, carousel, imageGrid } = useStyles();
   const {
     theme: { bg, font }
   } = useContext(ThemeContext);
@@ -58,7 +58,7 @@ const DetailTabs = ({ images, recs, trailer }) => {
       </Fade>
       <Fade in={checked.images}>
         <TabPanel value={value} index={1}>
-          <Grid container spacing={2}>
+          <Grid container spacing={4} className={imageGrid}>
             {images &&
               images.map(({ file_path }, idx) => (
                 <Grid key={idx} item md={4}>

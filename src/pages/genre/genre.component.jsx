@@ -4,7 +4,7 @@ import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from 'react-loader-spinner';
 
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Hidden } from '@material-ui/core';
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
@@ -55,10 +55,12 @@ const GenrePage = () => {
   return (
     <div className={body}>
       <Grid container>
-        <Grid item xs={2} className={sidebar}>
-          <Sidebar />
-        </Grid>
-        <Grid item xs={9} className={content}>
+        <Hidden smDown>
+          <Grid item md={2} className={sidebar}>
+            <Sidebar />
+          </Grid>
+        </Hidden>
+        <Grid item xs={10} md={9} className={content}>
           <Typography variant='h5' className={header}>
             {title}
           </Typography>

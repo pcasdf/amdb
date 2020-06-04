@@ -34,7 +34,10 @@ export const useStyles = makeStyles(theme => ({
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    '@media (max-width: 450px)': {
+      display: 'none'
+    }
   },
   inputRoot: {
     color: 'inherit'
@@ -50,6 +53,15 @@ export const useStyles = makeStyles(theme => ({
       '&:focus': {
         width: '40ch'
       }
+    },
+    '@media (max-width: 700px)': {
+      width: '150px'
+    },
+    '@media (max-width: 500px)': {
+      width: '100px'
+    },
+    '@media (max-width: 450px)': {
+      display: 'none'
     }
   }
 }));

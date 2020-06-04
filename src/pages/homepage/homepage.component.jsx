@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import axios from 'axios';
 
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Hidden } from '@material-ui/core';
 
 import { useStyles } from './homepage.styles';
 import { ResultsContext } from '../../contexts/results/results.context';
@@ -50,10 +50,12 @@ const HomePage = () => {
   return (
     <div className={homepage}>
       <Grid container>
-        <Grid item xs={2} className={sidebar}>
-          <Sidebar />
-        </Grid>
-        <Grid item xs={10} container className={content}>
+        <Hidden smDown>
+          <Grid item md={2} className={sidebar}>
+            <Sidebar />
+          </Grid>
+        </Hidden>
+        <Grid item md={10} xs={12} container className={content}>
           <Grid item xs={12} className={subject}>
             <Grid item xs={12} className={titleContainer}>
               <Typography variant='h5' className={title}>

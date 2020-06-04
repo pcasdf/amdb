@@ -12,7 +12,7 @@ const Card = ({ id, poster_path, title, original_name, vote_average }) => {
   const { theme } = useContext(ThemeContext);
   const { grid, label, rating, vote } = useStyles();
   return (
-    <Grid item className={grid} md={2} sm={3} key={id}>
+    <Grid item className={grid} md={2} sm={3} xs={4} key={id}>
       <Link to={`/${id}`}>
         <ImageCard img={poster_path} />
         <div className={label}>

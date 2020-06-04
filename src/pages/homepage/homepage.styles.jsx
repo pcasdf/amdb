@@ -23,6 +23,6 @@ export const useStyles = makeStyles({
   },
   content: {
     position: 'relative',
-    right: '5%'
+    right: '6%'
   }
 });

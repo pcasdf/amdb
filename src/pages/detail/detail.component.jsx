@@ -19,7 +19,7 @@ const Detail = () => {
       `https://api.themoviedb.org/3/movie/${id}?api_key=bada949f4005b48da2fb91c2ba013808`
     );
     const response = await axios.get(
-      `http://www.omdbapi.com/?apikey=fdbaa0a9&i=${movie.data.imdb_id}`
+      `https://www.omdbapi.com/?apikey=fdbaa0a9&i=${movie.data.imdb_id}`
     );
     const images = await axios.get(
       `https://api.themoviedb.org/3/movie/${id}/images?api_key=bada949f4005b48da2fb91c2ba013808`

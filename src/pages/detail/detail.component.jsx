@@ -12,6 +12,8 @@ const Detail = () => {
   const [images, setImages] = useState();
   const [trailer, setTrailer] = useState();
   const [recs, setRecs] = useState();
+  const [actors, setActors] = useState();
+  const [actorsData, setActorsData] = useState([]);
   const { titleId: id } = useParams();
 
   const fetchDetails = useCallback(async () => {
@@ -34,14 +36,32 @@ const Detail = () => {
     setDetail(response.data);
     setImages(images.data.backdrops);
     setRecs(recommends.data.results);
+    setActors(response.data.Actors.split(','));
     if (vid.data.results[0]) {
       setTrailer(vid.data.results[0].key);
     }
   }, [id]);
 
+  const fetchActors = async name => {
+    if (actors) {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/search/person?api_key=bada949f4005b48da2fb91c2ba013808&language=en-US&query=${name}&page=1&include_adult=false`
+      );
+      setActorsData(prev => [...prev, response.data.results[0]]);
+      console.log(response.data.results[0]);
+    }
+  };
+
   useEffect(() => {
     fetchDetails();
+    setActorsData([]);
   }, [fetchDetails]);
+
+  useEffect(() => {
+    if (actors) {
+      actors.forEach(each => fetchActors(each));
+    }
+  }, [actors]);
 
   const { tabs } = useStyles();
 
@@ -49,7 +69,7 @@ const Detail = () => {
     <div>
       <DetailContent {...{ data, detail, images }} />
       <div className={tabs}>
-        <DetailTabs {...{ images, recs, trailer }} />
+        <DetailTabs {...{ images, recs, trailer, actorsData }} />
       </div>
     </div>
   );

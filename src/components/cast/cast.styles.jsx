@@ -1,14 +1,13 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles({
-  root: {
+  container: {
     width: '80%',
-    padding: 0,
     margin: '0 auto',
-    marginBottom: '15px'
+    justifyContent: 'center',
+    textAlign: 'center'
   },
-  media: {
-    width: '100%',
-    height: 'auto'
+  profile: {
+    justifyContent: 'center'
   }
 });

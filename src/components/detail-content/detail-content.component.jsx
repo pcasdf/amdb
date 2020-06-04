@@ -13,9 +13,6 @@ const DetailContent = ({ data, detail, images }) => {
     bg = `https://image.tmdb.org/t/p/w500${images[0].file_path}`;
   }
 
-  console.log(data);
-  console.log(detail);
-
   const {
     content,
     title,
@@ -28,7 +25,7 @@ const DetailContent = ({ data, detail, images }) => {
   } = useStyles();
   return (
     <div className={content}>
-      <img src={bg} className={bgImage} />
+      <img src={bg} className={bgImage} alt='cover' />
       {data && detail && (
         <Grid container spacing={3} className={grid}>
           <Grid item md={4} xs={12} className={poster}>

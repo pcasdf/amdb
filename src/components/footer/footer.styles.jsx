@@ -5,14 +5,17 @@ export const useStyles = makeStyles({
     backgroundColor: '#112244',
     height: '150px',
     color: 'white',
-    display: 'flex',
     textAlign: 'center',
-    justifyContent: 'center',
-    margin: 'auto'
+    paddingTop: '50px'
+  },
+  logo: {
+    width: '30px',
+    margin: '10px'
+  },
+  logos: {
+    alignSelf: 'center'
   },
   text: {
-    margin: 'auto',
-    justifyContent: 'center',
     fontSize: '.8rem'
   }
 });

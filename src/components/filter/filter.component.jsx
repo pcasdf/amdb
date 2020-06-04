@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import { Grid, Typography } from '@material-ui/core';
 
 import { useStyles } from './filter.styles';
 import Dropdown from '../dropdown/dropdown.component';
@@ -13,7 +12,7 @@ const Filter = () => {
   const history = useHistory();
   const { dropdown } = useStyles();
 
-  const updateParams = () => {
+  const updateParams = useCallback(() => {
     if (category === 'all') {
       setMessage(prev => ['Movies and TV Series', prev[1]]);
     } else if (category === 'movie') {
@@ -27,7 +26,7 @@ const Filter = () => {
     } else {
       setMessage(prev => [prev[0], 'Daily']);
     }
-  };
+  }, [category, time]);
 
   const handleCategoryChange = value => {
     let target;
@@ -53,7 +52,7 @@ const Filter = () => {
 
   useEffect(() => {
     updateParams();
-  }, [category, time]);
+  }, [category, time, updateParams]);
 
   return (
     <Grid

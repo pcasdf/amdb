@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import Grid from '@material-ui/core/Grid';
+import { Grid } from '@material-ui/core';
 
 import { useStyles } from './card.styles';
 import { ThemeContext } from '../../contexts/theme/theme.context';

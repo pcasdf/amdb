@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 
 export const ThemeContext = createContext({
   theme: {
@@ -8,7 +8,7 @@ export const ThemeContext = createContext({
   toggle: () => {}
 });
 
-const ThemeContextProvider = props => {
+const ThemeContextProvider = ({ children }) => {
   const [theme, setTheme] = useState({
     bg: 'white',
     font: 'black'
@@ -30,7 +30,7 @@ const ThemeContextProvider = props => {
 
   return (
     <ThemeContext.Provider value={{ toggle: toggleTheme, theme: theme }}>
-      {props.children}
+      {children}
     </ThemeContext.Provider>
   );
 };

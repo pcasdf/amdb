@@ -2,8 +2,7 @@ import React, { useState, useEffect, useCallback, useContext } from 'react';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import { Grid, Typography } from '@material-ui/core';
 
 import { ThemeContext } from '../../contexts/theme/theme.context';
 import { ResultsContext } from '../../contexts/results/results.context';

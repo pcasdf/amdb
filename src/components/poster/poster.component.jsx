@@ -1,8 +1,6 @@
 import React from 'react';
 
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardMedia from '@material-ui/core/CardMedia';
+import { Card, CardActionArea, CardMedia } from '@material-ui/core';
 
 import { useStyles } from './poster.styles';
 

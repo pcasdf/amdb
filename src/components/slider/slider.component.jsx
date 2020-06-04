@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import Grid from '@material-ui/core/Grid';
+import { Grid } from '@material-ui/core';
 
 import { useStyles } from './slider.styles';
 import { ThemeContext } from '../../contexts/theme/theme.context';
@@ -9,7 +9,7 @@ import RatingIcon from '../rating-icon/rating-icon.component';
 import ImageCard from '../../components/image-card/image-card.component';
 
 const Slider = ({ list, index, details }) => {
-  const { theme, toggle } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const { rating, vote, label } = useStyles();
 
   return (

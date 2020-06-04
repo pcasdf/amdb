@@ -7,14 +7,14 @@ export const ResultsContext = createContext({
   setContext: () => {}
 });
 
-const ResultsContextProvider = props => {
+const ResultsContextProvider = ({ children }) => {
   const [context, setContext] = useState({
     current: null
   });
 
   return (
     <ResultsContext.Provider value={{ context, setContext }}>
-      {props.children}
+      {children}
     </ResultsContext.Provider>
   );
 };

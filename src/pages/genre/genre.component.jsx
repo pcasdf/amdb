@@ -1,18 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useParams, generatePath } from 'react-router-dom';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from 'react-loader-spinner';
 
-import Grid from '@material-ui/core/Grid';
+import { Grid, Typography } from '@material-ui/core';
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 import { useStyles } from './genre.styles';
 import { ResultsContext } from '../../contexts/results/results.context';
-
 import Card from '../../components/card/card.component';
-import { Typography } from '@material-ui/core';
 
 const GenrePage = () => {
   const [data, setData] = useState([]);
@@ -21,18 +19,20 @@ const GenrePage = () => {
   const { genre, id } = useParams();
   const [title, setTitle] = useState('');
 
-  const fetchData = async page => {
-    try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=bada949f4005b48da2fb91c2ba013808&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${id}`
-      );
-      console.log(response);
-      setData(prev => [...prev, ...response.data.results]);
-      setPage(prev => prev + 1);
-    } catch (err) {
-      console.log('Something went wrong.');
-    }
-  };
+  const fetchData = useCallback(
+    async page => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/discover/movie?api_key=bada949f4005b48da2fb91c2ba013808&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${id}`
+        );
+        setData(prev => [...prev, ...response.data.results]);
+        setPage(prev => prev + 1);
+      } catch (err) {
+        console.log('Something went wrong.');
+      }
+    },
+    [id]
+  );
 
   useEffect(() => {
     if (genre === 'scifi') {
@@ -44,7 +44,7 @@ const GenrePage = () => {
     setPage(1);
     setData([]);
     fetchData();
-  }, [genre, id]);
+  }, [genre, id, fetchData]);
 
   useEffect(() => {
     setContext({ current: data, movies: null, tv: null });

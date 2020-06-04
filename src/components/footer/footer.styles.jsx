@@ -6,9 +6,12 @@ export const useStyles = makeStyles({
     height: '200px',
     color: 'white',
     display: 'flex',
-    textAlign: 'center'
+    textAlign: 'center',
+    justifyContent: 'center',
+    margin: 'auto'
   },
   text: {
-    margin: 'auto 0'
+    margin: 'auto',
+    justifyContent: 'center'
   }
 });

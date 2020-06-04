@@ -4,6 +4,7 @@ import Loader from 'react-loader-spinner';
 
 import { Grid, Typography } from '@material-ui/core';
 
+import { useStyles } from './search-results.styles';
 import { ThemeContext } from '../../contexts/theme/theme.context';
 import { ResultsContext } from '../../contexts/results/results.context';
 import Card from '../../components/card/card.component';
@@ -36,8 +37,10 @@ const SearchResults = ({ match }) => {
     setContext({ current: data });
   }, [data, setContext]);
 
+  const { body } = useStyles();
+
   return (
-    <div className='search-results' style={{ textAlign: 'center' }}>
+    <div className={body} style={{ textAlign: 'center' }}>
       {isLoading && (
         <Loader
           type='ThreeDots'

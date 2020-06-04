@@ -11,6 +11,7 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { useStyles } from './genre.styles';
 import { ResultsContext } from '../../contexts/results/results.context';
 import Card from '../../components/card/card.component';
+import Sidebar from '../../components/sidebar/sidebar.component';
 
 const GenrePage = () => {
   const [data, setData] = useState([]);
@@ -50,34 +51,41 @@ const GenrePage = () => {
     setContext({ current: data, movies: null, tv: null });
   }, [data, setContext]);
 
-  const { header } = useStyles();
+  const { body, header, sidebar, content } = useStyles();
   return (
-    <div className='genres'>
-      <Typography variant='h4' className={header}>
-        {title}
-      </Typography>
-      <InfiniteScroll
-        style={{ margin: '0 auto', textAlign: 'center' }}
-        dataLength={data.length}
-        next={() => fetchData(page)}
-        hasMore={true}
-        threshold={0}
-        loader={
-          <Loader
-            type='ThreeDots'
-            color='#00BFFF'
-            height={100}
-            width={100}
-            timeout={3000}
-          />
-        }
-      >
-        <Grid container spacing={3}>
-          {data.map(item => (
-            <Card key={item.id} {...item} />
-          ))}
+    <div className={body}>
+      <Grid container>
+        <Grid item xs={2} className={sidebar}>
+          <Sidebar />
         </Grid>
-      </InfiniteScroll>
+        <Grid item xs={9} className={content}>
+          <Typography variant='h5' className={header}>
+            {title}
+          </Typography>
+          <InfiniteScroll
+            style={{ margin: '0 auto', textAlign: 'center' }}
+            dataLength={data.length}
+            next={() => fetchData(page)}
+            hasMore={true}
+            threshold={0}
+            loader={
+              <Loader
+                type='ThreeDots'
+                color='#00BFFF'
+                height={100}
+                width={100}
+                timeout={3000}
+              />
+            }
+          >
+            <Grid container spacing={3}>
+              {data.map(item => (
+                <Card key={item.id} {...item} />
+              ))}
+            </Grid>
+          </InfiniteScroll>
+        </Grid>
+      </Grid>
     </div>
   );
 };

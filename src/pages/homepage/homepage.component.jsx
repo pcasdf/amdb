@@ -6,6 +6,7 @@ import { Grid, Typography } from '@material-ui/core';
 import { useStyles } from './homepage.styles';
 import { ResultsContext } from '../../contexts/results/results.context';
 import Carousel from '../../components/carousel/carousel.component';
+import Sidebar from '../../components/sidebar/sidebar.component';
 
 const HomePage = () => {
   const [movies, setMovies] = useState();
@@ -36,38 +37,53 @@ const HomePage = () => {
     });
   }, []);
 
-  const { title, subject, titleContainer, sliderContainer } = useStyles();
+  const {
+    homepage,
+    title,
+    subject,
+    titleContainer,
+    sliderContainer,
+    sidebar,
+    content
+  } = useStyles();
 
   return (
-    <div className='homepage'>
-      <Grid container className={subject}>
-        <Grid item xs={12} className={titleContainer}>
-          <Typography variant='h5' className={title}>
-            Trending Movies
-          </Typography>
+    <div className={homepage}>
+      <Grid container>
+        <Grid item xs={2} className={sidebar}>
+          <Sidebar />
         </Grid>
-        <Grid
-          item
-          xs={12}
-          className={sliderContainer}
-          onClick={() => setContext({ ...context, current: movies })}
-        >
-          <Carousel list={movies} details />
-        </Grid>
-      </Grid>
-      <Grid container className={subject}>
-        <Grid item xs={12} className={titleContainer}>
-          <Typography variant='h5' className={title}>
-            Trending TV Series
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          className={sliderContainer}
-          onClick={() => setContext({ ...context, current: tvSeries })}
-        >
-          <Carousel list={tvSeries} details />
+        <Grid item xs={10} container className={content}>
+          <Grid item xs={12} className={subject}>
+            <Grid item xs={12} className={titleContainer}>
+              <Typography variant='h5' className={title}>
+                Trending Movies
+              </Typography>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              className={sliderContainer}
+              onClick={() => setContext({ ...context, current: movies })}
+            >
+              <Carousel list={movies} details />
+            </Grid>
+          </Grid>
+          <Grid item container className={subject}>
+            <Grid item xs={12} className={titleContainer}>
+              <Typography variant='h5' className={title}>
+                Trending TV Series
+              </Typography>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              className={sliderContainer}
+              onClick={() => setContext({ ...context, current: tvSeries })}
+            >
+              <Carousel list={tvSeries} details />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </div>

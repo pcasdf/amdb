@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
+import { useStyles } from './trending.styles';
 import { ResultsContext } from '../../contexts/results/results.context';
 import Card from '../../components/card/card.component';
 import Filter from '../../components/filter/filter.component';
@@ -40,8 +41,10 @@ const Trending = () => {
     setContext({ current: data, movies: null, tv: null });
   }, [data, setContext]);
 
+  const { body } = useStyles();
+
   return (
-    <div className='homepage'>
+    <div className={body}>
       <InfiniteScroll
         style={{ margin: '0 auto', textAlign: 'center' }}
         dataLength={data.length}

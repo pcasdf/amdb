@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles({
   footer: {
     backgroundColor: '#112244',
-    height: '200px',
+    height: '150px',
     color: 'white',
     display: 'flex',
     textAlign: 'center',
@@ -12,6 +12,7 @@ export const useStyles = makeStyles({
   },
   text: {
     margin: 'auto',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    fontSize: '.8rem'
   }
 });

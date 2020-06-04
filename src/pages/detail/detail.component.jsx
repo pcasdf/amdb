@@ -34,7 +34,9 @@ const Detail = () => {
     setDetail(response.data);
     setImages(images.data.backdrops);
     setRecs(recommends.data.results);
-    setTrailer(vid.data.results[0].key);
+    if (vid.data.results[0]) {
+      setTrailer(vid.data.results[0].key);
+    }
   }, [id]);
 
   useEffect(() => {
@@ -45,7 +47,7 @@ const Detail = () => {
 
   return (
     <div>
-      <DetailContent {...{ data, detail }} />
+      <DetailContent {...{ data, detail, images }} />
       <div className={tabs}>
         <DetailTabs {...{ images, recs, trailer }} />
       </div>

@@ -25,11 +25,17 @@ const Carousel = ({ list, details }) => {
 
   return (
     <Grid container className={overhead}>
-      <Grid item sm={1} className={arrow}>
+      <Grid
+        item
+        sm={1}
+        className={arrow}
+        style={{ display: 'flex', justifyContent: 'flex-end' }}
+      >
         {index[0] > 0 && (
           <ChevronLeftRoundedIcon
             className={icon}
             onClick={() => handleChange(0)}
+            style={{ marginRight: '10px' }}
           />
         )}
       </Grid>

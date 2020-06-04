@@ -1,18 +1,15 @@
 import React from 'react';
 
-import {
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Divider
-} from '@material-ui/core';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import GitHubIcon from '@material-ui/icons/GitHub';
+
+import { List, ListItem, ListItemText, Divider } from '@material-ui/core';
 
 import { useStyles } from './drawer.styles';
 import ListEntry from '../list-entry/list-entry.component';
 
 const SideDrawer = ({ toggleDrawer }) => {
-  const { list, icon, logo } = useStyles();
+  const { list, logo } = useStyles();
   return (
     <div
       className={list}
@@ -52,35 +49,19 @@ const SideDrawer = ({ toggleDrawer }) => {
       </List>
       <Divider />
       <List>
-        <ListItem button>
-          <ListItemIcon>
-            <img
-              className={icon}
-              alt='iMDB'
-              src={require('../../assets/imdb.png')}
-            />
-          </ListItemIcon>
-          <ListItemText>iMDB</ListItemText>
+        <ListItem
+          button
+          onClick={() => window.open('http://www.linkedin.com/in/pcho90')}
+        >
+          <LinkedInIcon style={{ marginRight: '8px' }} />
+          <ListItemText>@pcho90</ListItemText>
         </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <img
-              className={icon}
-              alt='Rotten Tomatoes'
-              src={require('../../assets/tomato.ico')}
-            />
-          </ListItemIcon>
-          <ListItemText>Rotten Tomatoes</ListItemText>
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <img
-              className={icon}
-              alt='Metacritic'
-              src={require('../../assets/metacritic.png')}
-            />
-          </ListItemIcon>
-          <ListItemText>Metacritic</ListItemText>
+        <ListItem
+          button
+          onClick={() => window.open('http://www.github.com/pcho90')}
+        >
+          <GitHubIcon style={{ marginRight: '8px' }} />
+          <ListItemText>github.com/pcho90</ListItemText>
         </ListItem>
       </List>
     </div>

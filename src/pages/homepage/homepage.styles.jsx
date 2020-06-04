@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles({
   homepage: {
     width: '100%',
-    margin: '30px auto'
+    margin: '30px auto',
+    paddingTop: '60px'
   },
   title: {
     marginLeft: '10%'

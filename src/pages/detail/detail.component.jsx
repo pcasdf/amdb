@@ -63,10 +63,10 @@ const Detail = () => {
     }
   }, [actors]);
 
-  const { tabs } = useStyles();
+  const { body, tabs } = useStyles();
 
   return (
-    <div>
+    <div className={body}>
       <DetailContent {...{ data, detail, images }} />
       <div className={tabs}>
         <DetailTabs {...{ images, recs, trailer, actorsData }} />

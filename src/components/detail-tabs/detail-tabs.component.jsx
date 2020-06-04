@@ -20,7 +20,7 @@ const DetailTabs = ({ images, recs, trailer }) => {
   return (
     <div className={tabs}>
       <StyledTabs centered value={value} onChange={handleChange}>
-        <StyledTab label='Trailers' />
+        <StyledTab label='Trailer' />
         <StyledTab label='Images' />
         <StyledTab label='Similar Titles' />
       </StyledTabs>

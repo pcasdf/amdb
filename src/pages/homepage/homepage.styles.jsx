@@ -13,7 +13,7 @@ export const useStyles = makeStyles({
     color: '#126'
   },
   subject: {
-    height: '400px',
+    height: '30vw',
     width: '100%'
   },
   titleContainer: {

@@ -69,7 +69,7 @@ const HomePage = () => {
               <Carousel list={movies} details />
             </Grid>
           </Grid>
-          <Grid item container className={subject}>
+          <Grid item md={12} container className={subject}>
             <Grid item xs={12} className={titleContainer}>
               <Typography variant='h5' className={title}>
                 Trending TV Series

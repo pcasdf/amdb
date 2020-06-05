@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Grid, Typography } from '@material-ui/core';
+import Rating from '@material-ui/lab/Rating';
 
 import { useStyles } from './detail-content.styles';
 import Poster from '../../components/poster/poster.component';
@@ -12,7 +13,7 @@ const DetailContent = ({ data, detail, images }) => {
   if (images && images[0]) {
     bg = `https://image.tmdb.org/t/p/w500${images[0].file_path}`;
   }
-
+  if (detail) console.log(detail.Ratings[0].Value);
   const {
     content,
     title,
@@ -41,7 +42,13 @@ const DetailContent = ({ data, detail, images }) => {
             <Typography className={details}>
               {detail.Runtime} | Released {detail.Released}
             </Typography>
-            <Ratings Ratings={detail.Ratings} />
+            <Rating
+              name='read-only'
+              value={detail.Ratings[0].Value.split('/')[0] / 2}
+              precision={0.5}
+              style={{ marginBottom: '12px' }}
+              readOnly
+            />
             <Text title='Summary' content={detail.Plot} lg />
             <Text title='Actors' content={detail.Actors} />
             <Text title='Director' content={detail.Director} />

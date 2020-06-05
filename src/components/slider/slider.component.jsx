@@ -2,15 +2,15 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Grid } from '@material-ui/core';
+import StarIcon from '@material-ui/icons/Star';
 
 import { useStyles } from './slider.styles';
 import { ThemeContext } from '../../contexts/theme/theme.context';
-import RatingIcon from '../rating-icon/rating-icon.component';
 import ImageCard from '../../components/image-card/image-card.component';
 
 const Slider = ({ list, index, details }) => {
   const { theme } = useContext(ThemeContext);
-  const { rating, vote, label } = useStyles();
+  const { rating, vote, label, icon } = useStyles();
 
   return (
     <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
@@ -28,7 +28,7 @@ const Slider = ({ list, index, details }) => {
                         {title || original_name}
                       </span>
                       <div className={rating}>
-                        <RatingIcon />
+                        <StarIcon className={icon} />
                         <span style={{ color: theme.font }} className={vote}>
                           {vote_average}
                         </span>

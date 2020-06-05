@@ -11,5 +11,9 @@ export const useStyles = makeStyles({
   },
   vote: {
     margin: 'auto 5px'
+  },
+  icon: {
+    fill: '#f5c518',
+    margin: 'auto'
   }
 });

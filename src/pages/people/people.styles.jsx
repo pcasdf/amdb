@@ -54,6 +54,6 @@ export const useStyles = makeStyles({
     marginBottom: '30px'
   },
   button: {
-    margin: '20px auto 0 auto'
+    margin: '30px auto 0 auto'
   }
 });

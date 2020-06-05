@@ -57,7 +57,7 @@ const DetailTabs = ({ images, recs, trailer, actorsData }) => {
         <StyledTab style={{ color: font }} label='Recently Browsed' />
       </StyledTabs>
       <Fade in={checked.Cast}>
-        <TabPanel dataClass='asdf' className={video} value={value} index={0}>
+        <TabPanel className={video} value={value} index={0}>
           <Cast actors={actorsData} />
         </TabPanel>
       </Fade>

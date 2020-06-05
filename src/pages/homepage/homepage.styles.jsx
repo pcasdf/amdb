@@ -8,7 +8,7 @@ export const useStyles = makeStyles({
   },
   title: {
     marginLeft: '9.5vw',
-    fontWeight: '600',
+    fontWeight: '500',
     fontSize: '1.4rem',
     color: '#126'
   },

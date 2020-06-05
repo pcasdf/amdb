@@ -9,5 +9,9 @@ export const useStyles = makeStyles({
   },
   profile: {
     justifyContent: 'center'
+  },
+  label: {
+    fontWeight: '500',
+    color: '#248'
   }
 });

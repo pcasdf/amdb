@@ -10,6 +10,7 @@ import Trending from './pages/trending/trending.component';
 import GenrePage from './pages/genre/genre.component';
 import Detail from './pages/detail/detail.component';
 import SearchResults from './pages/search-results/search-results.component';
+import People from './pages/people/people.component';
 import Footer from './components/footer/footer.component';
 
 const App = () => (
@@ -23,6 +24,7 @@ const App = () => (
         <Route exact path='/trending' component={Trending} />
         <Route exact path='/trending/:category/:time' component={Trending} />
         <Route exact path='/genre/:genre/:id' component={GenrePage} />
+        <Route exact path='/people/:id' component={People} />
         <Redirect to='/' />
       </Switch>
     </div>

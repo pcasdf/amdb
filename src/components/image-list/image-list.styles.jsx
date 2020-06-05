@@ -8,5 +8,8 @@ export const useStyles = makeStyles({
   imageGrid: {
     width: '80vw',
     margin: '0 auto'
+  },
+  button: {
+    margin: '20px auto 0 auto'
   }
 });

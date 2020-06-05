@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import { useStyles } from './filter.styles';
 import Dropdown from '../dropdown/dropdown.component';
@@ -10,7 +10,6 @@ const Filter = () => {
   const [message, setMessage] = useState(['Movies and TV Series', 'Weekly']);
   const { category = 'all', time = 'week' } = useParams();
   const history = useHistory();
-  const { dropdown } = useStyles();
 
   const updateParams = useCallback(() => {
     if (category === 'all') {
@@ -54,27 +53,27 @@ const Filter = () => {
     updateParams();
   }, [category, time, updateParams]);
 
+  const { title } = useStyles();
+
   return (
     <Grid
       item
       md={12}
       style={{ display: 'flex', justifyContent: 'space-between' }}
     >
-      <Typography variant='h6' style={{ margin: 'auto 5px', fontWeight: 400 }}>
+      <span className={title}>
         Trending {message[0]}, {message[1]}
-      </Typography>
+      </span>
       <div className='options'>
         <Dropdown
           options={['All', 'Movies', 'TV Series']}
           defaultValue='All'
           onChange={handleCategoryChange}
-          className={dropdown}
         />
         <Dropdown
           options={['Weekly', 'Daily']}
           defaultValue='Weekly'
           onChange={handleTimeChange}
-          className={dropdown}
         />
       </div>
     </Grid>

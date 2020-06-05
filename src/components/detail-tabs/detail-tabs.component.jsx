@@ -40,8 +40,8 @@ const DetailTabs = ({ images, recs, trailer, actorsData }) => {
     } else {
       setChecked({
         ...checked,
-        [target]: true,
-        [lastChecked]: false
+        [lastChecked]: false,
+        [target]: true
       });
     }
     setLastChecked(target);

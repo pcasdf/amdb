@@ -58,9 +58,7 @@ const HomePage = () => {
         <Grid item md={10} xs={12} container className={content}>
           <Grid item xs={12} className={subject}>
             <Grid item xs={12} className={titleContainer}>
-              <Typography variant='h5' className={title}>
-                Trending Movies
-              </Typography>
+              <span className={title}>Trending Movies</span>
             </Grid>
             <Grid
               item

@@ -4,7 +4,7 @@ import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from 'react-loader-spinner';
 
-import { Grid, Typography, Hidden } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
@@ -41,7 +41,6 @@ const GenrePage = () => {
     } else {
       setTitle(genre[0].toUpperCase() + genre.slice(1));
     }
-
     setPage(1);
     setData([]);
     fetchData();
@@ -51,7 +50,7 @@ const GenrePage = () => {
     setContext({ current: data, movies: null, tv: null });
   }, [data, setContext]);
 
-  const { body, header, content } = useStyles();
+  const { body, label, content } = useStyles();
   return (
     <div className={body}>
       <Grid container>
@@ -61,9 +60,7 @@ const GenrePage = () => {
           </Grid>
         </Hidden>
         <Grid item xs={10} md={9} className={content}>
-          <Typography variant='h5' className={header}>
-            {title}
-          </Typography>
+          <span className={label}>{title}</span>
           <InfiniteScroll
             style={{ margin: '0 auto', textAlign: 'center' }}
             dataLength={data.length}
@@ -80,7 +77,7 @@ const GenrePage = () => {
               />
             }
           >
-            <Grid container spacing={3}>
+            <Grid container spacing={3} style={{ marginTop: '10px' }}>
               {data.map(item => (
                 <Card key={item.id} {...item} />
               ))}

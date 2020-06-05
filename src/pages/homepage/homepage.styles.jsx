@@ -7,7 +7,10 @@ export const useStyles = makeStyles({
     paddingTop: '60px'
   },
   title: {
-    marginLeft: '10%'
+    marginLeft: '9.5vw',
+    fontWeight: '600',
+    fontSize: '1.4rem',
+    color: '#126'
   },
   subject: {
     height: '400px',

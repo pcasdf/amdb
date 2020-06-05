@@ -6,8 +6,11 @@ export const useStyles = makeStyles({
     margin: '30px auto',
     paddingTop: '60px'
   },
-  header: {
-    marginBottom: '1rem'
+  label: {
+    margin: 'auto 5px',
+    color: '#126',
+    fontWeight: '600',
+    fontSize: '1.4rem'
   },
   content: {
     width: '80%',

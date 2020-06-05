@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useContext } from 'react';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import { useStyles } from './search-results.styles';
 import { ThemeContext } from '../../contexts/theme/theme.context';
@@ -37,10 +37,10 @@ const SearchResults = ({ match }) => {
     setContext({ current: data });
   }, [data, setContext]);
 
-  const { body } = useStyles();
+  const { body, head, gridHead } = useStyles();
 
   return (
-    <div className={body} style={{ textAlign: 'center' }}>
+    <div className={body}>
       {isLoading && (
         <Loader
           type='ThreeDots'
@@ -51,8 +51,8 @@ const SearchResults = ({ match }) => {
         />
       )}
       <Grid container spacing={3}>
-        <Grid item md={12}>
-          <Typography variant='h5'>Search results for "{title}" </Typography>
+        <Grid item md={12} className={gridHead}>
+          <span className={head}>Search results for "{title}"</span>
         </Grid>
         {data &&
           data.map(item => <Card key={item.id} theme={theme} {...item} />)}

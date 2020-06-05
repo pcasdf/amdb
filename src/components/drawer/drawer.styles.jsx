@@ -5,7 +5,7 @@ export const useStyles = makeStyles({
     color: '#555555'
   },
   list: {
-    width: '300px'
+    width: '275px'
   },
   icon: {
     height: '25px'

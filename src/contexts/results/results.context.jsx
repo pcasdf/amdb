@@ -2,14 +2,16 @@ import React, { createContext, useState } from 'react';
 
 export const ResultsContext = createContext({
   context: {
-    current: null
+    current: [],
+    input: ''
   },
   setContext: () => {}
 });
 
 const ResultsContextProvider = ({ children }) => {
   const [context, setContext] = useState({
-    current: null
+    current: [],
+    input: ''
   });
 
   return (

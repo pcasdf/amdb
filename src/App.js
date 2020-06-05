@@ -20,7 +20,8 @@ const App = () => (
     <div className='body'>
       <Switch>
         <Route exact path='/' component={HomePage} />
-        <Route exact path='/:titleId' component={Detail} />
+        <Route exact path='/info/:titleId' component={Detail} />
+        <Route exact path='/search' component={SearchResults} />
         <Route exact path='/search/:title' component={SearchResults} />
         <Route exact path='/trending' component={Trending} />
         <Route exact path='/trending/:category/:time' component={Trending} />

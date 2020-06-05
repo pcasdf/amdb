@@ -20,7 +20,7 @@ const Slider = ({ list, index, details }) => {
             idx >= index[0] &&
             idx < index[1] && (
               <Grid item sm={2} xs={1} key={id}>
-                <Link to={`/${id}`}>
+                <Link to={`/info/${id}`}>
                   <ImageCard img={poster_path} />
                   {details && (
                     <div className={label}>

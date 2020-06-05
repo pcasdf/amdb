@@ -13,30 +13,38 @@ import Sidebar from '../../components/sidebar/sidebar.component';
 const SearchResults = ({ match }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { setContext } = useContext(ResultsContext);
+  const {
+    context: { current, title: input },
+    setContext
+  } = useContext(ResultsContext);
   const { theme } = useContext(ThemeContext);
-  const title = match.params.title;
+  const [title, setTitle] = useState('');
+  const [location, setLocation] = useState(match.params.title);
 
   const fetchData = useCallback(async () => {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/search/multi?api_key=bada949f4005b48da2fb91c2ba013808&query=${title}&page=1`
+        `https://api.themoviedb.org/3/search/multi?api_key=bada949f4005b48da2fb91c2ba013808&query=${location}&page=1`
       );
       setData(response.data.results);
     } catch (err) {
       console.log('Something went wrong.');
     }
     setIsLoading(false);
-  }, [title]);
+  }, [location]);
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, [location]);
 
   useEffect(() => {
     setContext({ current: data });
-  }, [data, setContext]);
+  }, [data]);
+
+  useEffect(() => {
+    setTitle(input);
+  }, [input]);
 
   const { body, head, content } = useStyles();
 
@@ -61,8 +69,8 @@ const SearchResults = ({ match }) => {
           <Grid item xs={12}>
             <span className={head}>Search results for "{title}"</span>
           </Grid>
-          {data &&
-            data.map(item => <Card key={item.id} theme={theme} {...item} />)}
+          {current &&
+            current.map(item => <Card key={item.id} theme={theme} {...item} />)}
         </Grid>
       </Grid>
     </div>

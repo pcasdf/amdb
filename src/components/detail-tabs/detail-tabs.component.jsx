@@ -11,7 +11,7 @@ import Video from '../video/video.component';
 import Carousel from '../carousel/carousel.component';
 import Cast from '../cast/cast.component';
 
-const DetailTabs = ({ images, recs, trailer, actorsData }) => {
+const DetailTabs = ({ images, recs, trailer, castData }) => {
   const { tabs, padding, video, carousel } = useStyles();
   const {
     theme: { bg, font }
@@ -58,7 +58,7 @@ const DetailTabs = ({ images, recs, trailer, actorsData }) => {
       </StyledTabs>
       <Fade in={checked.Cast}>
         <TabPanel className={video} value={value} index={0}>
-          <Cast actors={actorsData} />
+          <Cast cast={castData} />
         </TabPanel>
       </Fade>
       <Fade in={checked.Trailer}>

@@ -12,8 +12,8 @@ const Detail = () => {
   const [images, setImages] = useState();
   const [trailer, setTrailer] = useState();
   const [recs, setRecs] = useState();
-  const [actors, setActors] = useState();
-  const [actorsData, setActorsData] = useState([]);
+  const [cast, setCast] = useState();
+  const [castData, setCastData] = useState([]);
   const { titleId: id } = useParams();
 
   const fetchDetails = useCallback(async () => {
@@ -37,7 +37,7 @@ const Detail = () => {
       setDetail(response.data);
       setImages(images.data.backdrops);
       setRecs(recommends.data.results);
-      setActors(response.data.Actors.split(','));
+      setCast([...response.data.Actors.split(','), response.data.Director]);
       if (vid.data.results[0]) {
         setTrailer(vid.data.results[0].key);
       }
@@ -46,26 +46,25 @@ const Detail = () => {
     }
   }, [id]);
 
-  const fetchActors = async name => {
-    if (actors) {
+  const fetchCast = async name => {
+    if (cast) {
       const response = await axios.get(
         `https://api.themoviedb.org/3/search/person?api_key=bada949f4005b48da2fb91c2ba013808&language=en-US&query=${name}&page=1&include_adult=false`
       );
-      setActorsData(prev => [...prev, response.data.results[0]]);
-      console.log(response.data.results[0]);
+      setCastData(prev => [...prev, response.data.results[0]]);
     }
   };
 
   useEffect(() => {
     fetchDetails();
-    setActorsData([]);
+    setCastData([]);
   }, [fetchDetails]);
 
   useEffect(() => {
-    if (actors) {
-      actors.forEach(each => fetchActors(each));
+    if (cast) {
+      cast.forEach(each => fetchCast(each));
     }
-  }, [actors]);
+  }, [cast]);
 
   const { body, tabs } = useStyles();
 
@@ -73,7 +72,7 @@ const Detail = () => {
     <div className={body}>
       <DetailContent {...{ data, detail, images }} />
       <div className={tabs}>
-        <DetailTabs {...{ images, recs, trailer, actorsData }} />
+        <DetailTabs {...{ images, recs, trailer, castData }} />
       </div>
     </div>
   );

@@ -4,6 +4,8 @@ import Loader from 'react-loader-spinner';
 
 import { Grid, Hidden } from '@material-ui/core';
 
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+
 import { useStyles } from './list.styles';
 import Card from '../../components/card/card.component';
 import Sidebar from '../../components/sidebar/sidebar.component';

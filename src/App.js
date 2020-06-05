@@ -6,6 +6,7 @@ import './App.css';
 import ResultsContextProvider from './contexts/results/results.context';
 import Header from './components/header/header.component';
 import HomePage from './pages/homepage/homepage.component';
+import TopRated from './pages/top/top.component';
 import Trending from './pages/trending/trending.component';
 import GenrePage from './pages/genre/genre.component';
 import Detail from './pages/detail/detail.component';
@@ -25,6 +26,7 @@ const App = () => (
         <Route exact path='/trending/:category/:time' component={Trending} />
         <Route exact path='/genre/:genre/:id' component={GenrePage} />
         <Route exact path='/people/:id' component={People} />
+        <Route exact path='/top/:category' component={TopRated} />
         <Redirect to='/' />
       </Switch>
     </div>

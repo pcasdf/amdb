@@ -30,10 +30,6 @@ const People = () => {
       setData(details.data);
       setOtherData(otherDetails.data.results[0]);
       setImages(imageData.data.profiles);
-
-      console.log(details.data);
-      console.log(otherDetails.data.results[0]);
-      console.log(imageData.data.profiles);
     } catch (err) {
       console.log('Something went wrong.');
     }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
@@ -20,12 +21,13 @@ const SearchResults = ({ match }) => {
   const { theme } = useContext(ThemeContext);
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState(match.params.title);
+  const { push } = useHistory();
 
   const fetchData = useCallback(async () => {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/search/multi?api_key=bada949f4005b48da2fb91c2ba013808&query=${location}&page=1`
+        `https://api.themoviedb.org/3/search/multi?api_key=bada949f4005b48da2fb91c2ba013808&query=${input}&page=1`
       );
       setData(response.data.results);
     } catch (err) {

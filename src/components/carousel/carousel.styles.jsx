@@ -22,5 +22,8 @@ export const useStyles = makeStyles({
   },
   slider: {
     margin: 'auto 0'
+  },
+  hidden: {
+    display: 'none'
   }
 });

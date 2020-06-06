@@ -7,13 +7,11 @@ export const useStyles = makeStyles({
     padding: '10px',
     fontSize: '.9rem',
     borderRadius: '5px',
+    color: '#aaa',
     fontWeight: '500',
     '&:hover': {
       backgroundColor: '#248',
       cursor: 'pointer'
     }
-  },
-  link: {
-    color: '#aaa'
   }
 });

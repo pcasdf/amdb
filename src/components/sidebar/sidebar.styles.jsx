@@ -7,6 +7,6 @@ export const useStyles = makeStyles({
   },
   title: {
     fontWeight: '500',
-    color: '#124'
+    color: '#126'
   }
 });

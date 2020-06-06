@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import SimpleViewSlider from 'react-view-slider/simple';
+import ViewSlider from 'react-view-slider';
 
-import { Grid } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 import ChevronLeftRoundedIcon from '@material-ui/icons/ChevronLeftRounded';
 import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
 
@@ -21,7 +22,7 @@ const Carousel = ({ list, details }) => {
     }
   };
 
-  const { overhead, icon, arrow, slider } = useStyles();
+  const { overhead, icon, arrow, slider, hidden } = useStyles();
 
   return (
     <Grid container className={overhead}>
@@ -40,7 +41,11 @@ const Carousel = ({ list, details }) => {
         )}
       </Grid>
       <Grid item sm={10} className={slider}>
-        <SimpleViewSlider>
+        <SimpleViewSlider
+          transitionDuration={600}
+          spacing={0.3}
+          transitionTimingFunction={'ease-in-out'}
+        >
           <Slider key={index[0]} list={list} index={index} details={details} />
         </SimpleViewSlider>
       </Grid>
@@ -52,6 +57,13 @@ const Carousel = ({ list, details }) => {
           />
         )}
       </Grid>
+      {list &&
+        list.map(each => (
+          <img
+            className={hidden}
+            src={`https://image.tmdb.org/t/p/w500${each.poster_path}`}
+          />
+        ))}
     </Grid>
   );
 };

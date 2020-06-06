@@ -13,7 +13,7 @@ const SearchBar = () => {
   const [data, setData] = useState();
   const { setContext } = useContext(ResultsContext);
 
-  let history = useHistory();
+  let { push } = useHistory();
 
   const fetchData = useCallback(async () => {
     try {
@@ -28,6 +28,9 @@ const SearchBar = () => {
 
   useEffect(() => {
     fetchData();
+    if (input === '') {
+      push('/');
+    }
   }, [input]);
 
   useEffect(() => {
@@ -36,14 +39,14 @@ const SearchBar = () => {
 
   const handleChange = e => {
     if (input === '') {
-      history.push('/search');
+      push('/search');
     }
     setInput(e.target.value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    history.push(`/search/${input}`);
+    push(`/search/${input}`);
     setInput('');
   };
 

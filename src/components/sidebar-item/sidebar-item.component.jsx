@@ -1,15 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { useStyles } from './sidebar-item.styles';
 
 const SidebarItem = ({ title, url }) => {
-  const { item, link } = useStyles();
+  const { item } = useStyles();
+  const { push } = useHistory();
   return (
-    <div className={item}>
-      <Link to={url} className={link}>
-        {title.toUpperCase()}
-      </Link>
+    <div className={item} onClick={() => push(url)}>
+      {title.toUpperCase()}
     </div>
   );
 };

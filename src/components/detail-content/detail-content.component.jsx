@@ -6,7 +6,6 @@ import Rating from '@material-ui/lab/Rating';
 import { useStyles } from './detail-content.styles';
 import Poster from '../../components/poster/poster.component';
 import Text from '../text/text.component';
-import Ratings from '../ratings/ratings.component';
 
 const DetailContent = ({ data, detail, images }) => {
   let bg = '';

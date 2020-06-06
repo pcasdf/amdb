@@ -11,5 +11,11 @@ export const useStyles = makeStyles(theme => ({
   carousel: {
     display: 'flex',
     justifyContent: 'center'
+  },
+  tabs: {
+    '@media (max-width: 800px)': {
+      width: '90vw',
+      margin: '0 auto'
+    }
   }
 }));

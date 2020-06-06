@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 
 import { InputBase } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';

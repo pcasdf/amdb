@@ -8,7 +8,10 @@ export const useStyles = makeStyles({
     textAlign: 'center'
   },
   profile: {
-    justifyContent: 'center'
+    justifyContent: 'center',
+    '&:hover': {
+      opacity: '0.7'
+    }
   },
   label: {
     fontWeight: '500',

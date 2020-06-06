@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import SimpleViewSlider from 'react-view-slider/simple';
-import ViewSlider from 'react-view-slider';
 
-import { Grid, Hidden } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import ChevronLeftRoundedIcon from '@material-ui/icons/ChevronLeftRounded';
 import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
 
@@ -28,7 +27,7 @@ const Carousel = ({ list, details }) => {
     <Grid container className={overhead}>
       <Grid
         item
-        sm={1}
+        xs={1}
         className={arrow}
         style={{ display: 'flex', justifyContent: 'flex-end' }}
       >
@@ -40,7 +39,7 @@ const Carousel = ({ list, details }) => {
           />
         )}
       </Grid>
-      <Grid item sm={10} className={slider}>
+      <Grid item xs={10} className={slider}>
         <SimpleViewSlider
           transitionDuration={600}
           spacing={0.3}
@@ -49,7 +48,7 @@ const Carousel = ({ list, details }) => {
           <Slider key={index[0]} list={list} index={index} details={details} />
         </SimpleViewSlider>
       </Grid>
-      <Grid item sm={1} className={arrow}>
+      <Grid item xs={1} className={arrow}>
         {list && index[0] < 15 && (
           <ChevronRightRoundedIcon
             className={icon}
@@ -60,6 +59,7 @@ const Carousel = ({ list, details }) => {
       {list &&
         list.map(each => (
           <img
+            alt='hidden'
             className={hidden}
             src={`https://image.tmdb.org/t/p/w500${each.poster_path}`}
           />

@@ -15,5 +15,10 @@ export const useStyles = makeStyles({
   icon: {
     fill: '#f5c518',
     margin: 'auto'
+  },
+  poster: {
+    '&:hover': {
+      opacity: '0.7'
+    }
   }
 });

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import Loader from 'react-loader-spinner';
 
 import { Grid, Hidden } from '@material-ui/core';
 
@@ -13,14 +12,12 @@ import Sidebar from '../../components/sidebar/sidebar.component';
 
 const SearchResults = ({ match }) => {
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const {
     context: { current, input },
     setContext
   } = useContext(ResultsContext);
   const { theme } = useContext(ThemeContext);
   const { title } = useParams();
-  const { push } = useHistory();
 
   const fetchData = useCallback(async () => {
     try {
@@ -45,15 +42,6 @@ const SearchResults = ({ match }) => {
 
   return (
     <div className={body}>
-      {isLoading && (
-        <Loader
-          type='ThreeDots'
-          color='#00BFFF'
-          height={100}
-          width={100}
-          timeout={3000}
-        />
-      )}
       <Grid container>
         <Hidden smDown>
           <Grid item md={2}>

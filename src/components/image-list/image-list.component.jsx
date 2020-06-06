@@ -18,7 +18,7 @@ const ImageList = ({ images }) => {
                 style={{ transformOrigin: '0 0 0' }}
                 {...(index ? { timeout: 150 * (idx % 6) } : {})}
               >
-                <Grid key={idx} item md={4}>
+                <Grid key={idx} item xs={4}>
                   <img
                     alt='backdrop'
                     className={image}

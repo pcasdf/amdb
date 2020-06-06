@@ -94,9 +94,10 @@ const People = () => {
                   {otherData.known_for.map(({ poster_path, id }, idx) => (
                     <Grid item sm={1} md={3} key={idx}>
                       <img
+                        alt='profile'
                         className={poster}
                         src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                        onClick={() => push(`/${id}`)}
+                        onClick={() => push(`/info/${id}`)}
                       />
                     </Grid>
                   ))}
@@ -118,7 +119,7 @@ const People = () => {
                         {...(index ? { timeout: 150 * (idx % 9) } : {})}
                       >
                         <Grid item xs={3} key={idx} className={profiles}>
-                          <ImageCard img={file_path} />
+                          <ImageCard cursor='default' img={file_path} />
                         </Grid>
                       </Grow>
                     )

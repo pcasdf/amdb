@@ -8,7 +8,14 @@ import { useStyles } from './card.styles';
 import { ThemeContext } from '../../contexts/theme/theme.context';
 import ImageCard from '../../components/image-card/image-card.component';
 
-const Card = ({ id, poster_path, title, original_name, vote_average }) => {
+const Card = ({
+  id,
+  poster_path,
+  title,
+  original_name,
+  vote_average,
+  poster
+}) => {
   const { theme } = useContext(ThemeContext);
   const { grid, label, rating, vote, icon } = useStyles();
   return (

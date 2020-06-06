@@ -10,7 +10,7 @@ import ImageCard from '../../components/image-card/image-card.component';
 
 const Slider = ({ list, index, details }) => {
   const { theme } = useContext(ThemeContext);
-  const { rating, vote, label, icon } = useStyles();
+  const { rating, vote, label, icon, poster } = useStyles();
 
   return (
     <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
@@ -19,8 +19,8 @@ const Slider = ({ list, index, details }) => {
           ({ id, poster_path, title, original_name, vote_average }, idx) =>
             idx >= index[0] &&
             idx < index[1] && (
-              <Grid item sm={2} xs={1} key={id}>
-                <Link to={`/info/${id}`}>
+              <Grid item sm={2} xs={3} key={id} className={poster}>
+                <Link to={`/info/${id}`} onClick={() => window.scroll(0, 0)}>
                   <ImageCard img={poster_path} />
                   {details && (
                     <div className={label}>

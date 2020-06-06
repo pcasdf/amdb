@@ -1,9 +1,19 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import { mount } from 'enzyme';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+import SearchBar from '../src/components/search/search.component';
+
+describe('SearchBar', () => {
+  // let component;
+  // beforeEach(() => {
+  //   component = mount(<SearchBar />);
+  // });
+
+  const wrapper = mount(<SearchBar />);
+
+  expect(wrapper.state('input')).toBe('');
+
+  // it(`State updates with the current text in the input`, () => {
+  //   expect(component.state('input').value).toBe('');
+  // });
 });

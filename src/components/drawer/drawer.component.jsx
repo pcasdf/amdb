@@ -20,6 +20,8 @@ const SideDrawer = ({ toggleDrawer }) => {
       <List>
         <ListItem>
           <img
+            width='100%'
+            height='auto'
             className={logo}
             src={require('../../assets/logo-grey.png')}
             alt='logo'

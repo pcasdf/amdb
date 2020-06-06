@@ -11,6 +11,6 @@ export const useStyles = makeStyles(theme => ({
     width: '100px'
   },
   appBar: {
-    backgroundColor: '#112244'
+    backgroundColor: '#248'
   }
 }));

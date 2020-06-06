@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import { Grid, Button, Grow } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
 
 import { useStyles } from './people.styles';
-import ImageCard from '../../components/image-card/image-card.component';
-import Poster from '../../components/poster/poster.component';
+import Profile from '../../components/profile/profile.component';
+import Personal from '../../components/personal/personal.component';
+import Photos from '../../components/photos/photos.component';
 
 const People = () => {
   const [data, setData] = useState();
@@ -14,7 +15,6 @@ const People = () => {
   const [images, setImages] = useState();
   const [index, setIndex] = useState(9);
   const { id } = useParams();
-  const { push } = useHistory();
 
   const fetchData = async () => {
     try {
@@ -39,92 +39,16 @@ const People = () => {
     fetchData();
   }, [id]);
 
-  const {
-    body,
-    title,
-    bio,
-    label,
-    knownFor,
-    poster,
-    profile,
-    profiles,
-    info,
-    sublabel,
-    button
-  } = useStyles();
+  const { body, button } = useStyles();
 
   return (
     <div className={body}>
       {data && images && otherData && (
         <Grid container>
-          <Grid container item md={4} className={profile}>
-            <Grid item xs={12} md={12}>
-              <Poster img={images[0].file_path} />
-            </Grid>
-            <Grid item xs={12} className={info}>
-              <div className={label}>Personal Info</div>
-              <div className={sublabel}>Gender</div>
-              <div>{data.gender % 2 ? 'Female' : 'Male'}</div>
-              <div className={sublabel}>Hometown</div>
-              <div>{data.place_of_birth}</div>
-              <div className={sublabel}>Birthday</div>
-              <div>{data.birthday}</div>
-              {data.deathday && (
-                <>
-                  <div className={sublabel}>Died on</div>
-                  <div>{data.deathday}</div>
-                </>
-              )}
-              <div className={sublabel}>Known For</div>
-              <div>{data.known_for_department}</div>
-            </Grid>
-          </Grid>
+          <Profile {...{ images, data }} />
           <Grid container item xs={8}>
-            <Grid item xs={12}>
-              <div className={title}>{data.name}</div>
-              <div className={bio}>
-                <div className={label}>Biography</div>
-                {data.biography.split('.').slice(0, 5).join('')}.
-              </div>
-              <Grid container className={knownFor}>
-                <Grid item xs={12} className={label}>
-                  <span>Known For</span>
-                </Grid>
-                <Grid container item xs={12} spacing={3}>
-                  {otherData.known_for.map(({ poster_path, id }, idx) => (
-                    <Grid item sm={1} md={3} key={idx}>
-                      <img
-                        alt='profile'
-                        className={poster}
-                        src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                        onClick={() => push(`/info/${id}`)}
-                      />
-                    </Grid>
-                  ))}
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={12} style={{ marginBottom: '20px' }}>
-              <span className={label}>Photos</span>
-            </Grid>
-            <Grid container item xs={12} spacing={3}>
-              {images &&
-                images.map(
-                  ({ file_path }, idx) =>
-                    idx > 0 &&
-                    idx < index && (
-                      <Grow
-                        in={index}
-                        style={{ transformOrigin: '0 0 0' }}
-                        {...(index ? { timeout: 150 * (idx % 9) } : {})}
-                      >
-                        <Grid item xs={3} key={idx} className={profiles}>
-                          <ImageCard cursor='default' img={file_path} />
-                        </Grid>
-                      </Grow>
-                    )
-                )}
-            </Grid>
+            <Personal {...{ data, otherData }} />
+            <Photos {...{ images, index }} />
             {index < images.length && (
               <Button
                 onClick={() => setIndex(prev => prev + 8)}

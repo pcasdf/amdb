@@ -14,7 +14,7 @@ import Cast from '../cast/cast.component';
 const DetailTabs = ({ images, recs, trailer, castData }) => {
   const { tabs, padding, video, carousel } = useStyles();
   const {
-    theme: { bg, font }
+    theme: { bg }
   } = useContext(ThemeContext);
   const {
     context: { current }
@@ -51,11 +51,11 @@ const DetailTabs = ({ images, recs, trailer, castData }) => {
   return (
     <div className={tabs} style={{ backgroundColor: bg }}>
       <StyledTabs centered value={value} onChange={handleChange}>
-        <StyledTab style={{ color: '#248' }} label='Cast' />
-        <StyledTab style={{ color: '#248' }} label='Trailer' />
-        <StyledTab style={{ color: '#248' }} label='Images' />
-        <StyledTab style={{ color: '#248' }} label='Similar Titles' />
-        <StyledTab style={{ color: '#248' }} label='Recently Browsed' />
+        <StyledTab label='Cast' />
+        <StyledTab label='Trailer' />
+        <StyledTab label='Images' />
+        <StyledTab label='Similar Titles' />
+        <StyledTab label='Recently Browsed' />
       </StyledTabs>
       <Fade in={checked.Cast}>
         <TabPanel className={video} value={value} index={0}>

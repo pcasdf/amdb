@@ -6,53 +6,6 @@ export const useStyles = makeStyles({
     margin: '30px auto',
     paddingTop: '90px'
   },
-  profile: {
-    height: '100px'
-  },
-  info: {
-    paddingLeft: '4vw',
-    paddingTop: '30px',
-    fontSize: '.9rem'
-  },
-  title: {
-    marginBottom: '20px',
-    fontWeight: '600',
-    fontSize: '2rem',
-    color: '#248'
-  },
-  bio: {
-    marginBottom: '20px'
-  },
-  label: {
-    fontSize: '1.2rem',
-    fontWeight: '500',
-    marginBottom: '12px',
-    color: '#248'
-  },
-  sublabel: {
-    fontSize: '1rem',
-    fontWeight: '500',
-    margin: '15px 0 5px 0',
-    color: '#248'
-  },
-  poster: {
-    height: '20vw',
-    width: 'auto',
-    boxShadow: '3px 3px 6px #ccc',
-    borderRadius: '5px',
-    '&:hover': {
-      opacity: '0.7',
-      cursor: 'pointer'
-    }
-  },
-  knownFor: {
-    height: '28vw',
-    alignContent: 'flex-start'
-  },
-  profiles: {
-    height: '20vw',
-    marginBottom: '30px'
-  },
   button: {
     margin: '30px auto 0 auto'
   }

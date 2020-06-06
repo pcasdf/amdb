@@ -8,7 +8,7 @@ export const useStyles = makeStyles({
   },
   label: {
     margin: 'auto 5px',
-    color: '#126',
+    color: '#248',
     fontWeight: '600',
     fontSize: '1.4rem'
   },

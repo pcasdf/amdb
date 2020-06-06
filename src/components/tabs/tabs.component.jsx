@@ -11,7 +11,7 @@ export const StyledTabs = withStyles({
     '& > span': {
       maxWidth: 100,
       width: '100%',
-      backgroundColor: '#112244'
+      backgroundColor: '#248'
     }
   }
 })(props => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
@@ -19,7 +19,7 @@ export const StyledTabs = withStyles({
 export const StyledTab = withStyles(theme => ({
   root: {
     textTransform: 'none',
-    color: '#112244',
+    color: '#248',
     fontWeight: theme.typography.fontWeightRegular,
     fontSize: theme.typography.pxToRem(15),
     marginRight: theme.spacing(1),

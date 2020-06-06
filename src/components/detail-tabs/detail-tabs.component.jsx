@@ -51,11 +51,11 @@ const DetailTabs = ({ images, recs, trailer, castData }) => {
   return (
     <div className={tabs} style={{ backgroundColor: bg }}>
       <StyledTabs centered value={value} onChange={handleChange}>
-        <StyledTab style={{ color: font }} label='Cast' />
-        <StyledTab style={{ color: font }} label='Trailer' />
-        <StyledTab style={{ color: font }} label='Images' />
-        <StyledTab style={{ color: font }} label='Similar Titles' />
-        <StyledTab style={{ color: font }} label='Recently Browsed' />
+        <StyledTab style={{ color: '#248' }} label='Cast' />
+        <StyledTab style={{ color: '#248' }} label='Trailer' />
+        <StyledTab style={{ color: '#248' }} label='Images' />
+        <StyledTab style={{ color: '#248' }} label='Similar Titles' />
+        <StyledTab style={{ color: '#248' }} label='Recently Browsed' />
       </StyledTabs>
       <Fade in={checked.Cast}>
         <TabPanel className={video} value={value} index={0}>

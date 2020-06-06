@@ -18,7 +18,7 @@ export const useStyles = makeStyles({
     marginBottom: '20px',
     fontWeight: '600',
     fontSize: '2rem',
-    color: '#136'
+    color: '#248'
   },
   bio: {
     marginBottom: '20px'
@@ -27,13 +27,13 @@ export const useStyles = makeStyles({
     fontSize: '1.2rem',
     fontWeight: '500',
     marginBottom: '12px',
-    color: '#136'
+    color: '#248'
   },
   sublabel: {
     fontSize: '1rem',
     fontWeight: '500',
     margin: '15px 0 5px 0',
-    color: '#136'
+    color: '#248'
   },
   poster: {
     height: '20vw',

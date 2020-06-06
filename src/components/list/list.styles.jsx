@@ -10,6 +10,6 @@ export const useStyles = makeStyles({
   label: {
     fontSize: '1.4rem',
     fontWeight: '500',
-    color: '#126'
+    color: '#248'
   }
 });

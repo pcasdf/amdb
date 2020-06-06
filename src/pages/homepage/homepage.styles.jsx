@@ -10,7 +10,7 @@ export const useStyles = makeStyles({
     marginLeft: '9.5vw',
     fontWeight: '500',
     fontSize: '1.4rem',
-    color: '#126'
+    color: '#248'
   },
   subject: {
     height: '30vw',

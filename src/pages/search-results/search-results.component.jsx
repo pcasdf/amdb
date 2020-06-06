@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
@@ -15,16 +15,13 @@ const SearchResults = ({ match }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const {
-    context: { current, title: input },
+    context: { current, input },
     setContext
   } = useContext(ResultsContext);
   const { theme } = useContext(ThemeContext);
-  const [title, setTitle] = useState('');
-  const [location, setLocation] = useState(match.params.title);
-  const { push } = useHistory();
+  const { title } = useParams();
 
   const fetchData = useCallback(async () => {
-    setIsLoading(true);
     try {
       const response = await axios.get(
         `https://api.themoviedb.org/3/search/multi?api_key=bada949f4005b48da2fb91c2ba013808&query=${input}&page=1`
@@ -33,20 +30,15 @@ const SearchResults = ({ match }) => {
     } catch (err) {
       console.log('Something went wrong.');
     }
-    setIsLoading(false);
-  }, [location]);
+  }, [input]);
 
   useEffect(() => {
     fetchData();
-  }, [location]);
-
-  useEffect(() => {
-    setContext({ current: data });
-  }, [data]);
-
-  useEffect(() => {
-    setTitle(input);
   }, [input]);
+
+  useEffect(() => {
+    setContext({ current: data, input: input });
+  }, [data, input]);
 
   const { body, head, content } = useStyles();
 
@@ -69,7 +61,7 @@ const SearchResults = ({ match }) => {
         </Hidden>
         <Grid container item xs={10} md={9} spacing={3} className={content}>
           <Grid item xs={12}>
-            <span className={head}>Search results for "{title}"</span>
+            <span className={head}>Search results for "{input || title}"</span>
           </Grid>
           {current &&
             current.map(item => <Card key={item.id} theme={theme} {...item} />)}

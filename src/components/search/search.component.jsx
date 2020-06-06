@@ -9,33 +9,13 @@ import { useStyles } from './search.styles';
 import { ResultsContext } from '../../contexts/results/results.context';
 
 const SearchBar = () => {
-  const [input, setInput] = useState('');
-  const [data, setData] = useState();
+  const [input, setInput] = useState();
   const { setContext } = useContext(ResultsContext);
-
-  let { push } = useHistory();
-
-  const fetchData = useCallback(async () => {
-    try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/search/multi?api_key=bada949f4005b48da2fb91c2ba013808&query=${input}&page=1`
-      );
-      setData(response.data.results);
-    } catch (err) {
-      console.log('Something went wrong.');
-    }
-  }, [input]);
+  const { push } = useHistory();
 
   useEffect(() => {
-    fetchData();
-    if (input === '') {
-      push('/');
-    }
+    setContext({ input });
   }, [input]);
-
-  useEffect(() => {
-    setContext({ current: data, title: input });
-  }, [data]);
 
   const handleChange = e => {
     if (input === '') {
@@ -47,6 +27,7 @@ const SearchBar = () => {
   const handleSubmit = e => {
     e.preventDefault();
     push(`/search/${input}`);
+    setContext({ input });
     setInput('');
   };
 

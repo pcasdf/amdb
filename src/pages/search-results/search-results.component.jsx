@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
@@ -20,6 +20,7 @@ const SearchResults = ({ match }) => {
   } = useContext(ResultsContext);
   const { theme } = useContext(ThemeContext);
   const { title } = useParams();
+  const { push } = useHistory();
 
   const fetchData = useCallback(async () => {
     try {

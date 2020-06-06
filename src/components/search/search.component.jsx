@@ -9,7 +9,7 @@ import { useStyles } from './search.styles';
 import { ResultsContext } from '../../contexts/results/results.context';
 
 const SearchBar = () => {
-  const [input, setInput] = useState();
+  const [input, setInput] = useState('');
   const { setContext } = useContext(ResultsContext);
   const { push } = useHistory();
 

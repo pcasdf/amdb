@@ -12,7 +12,6 @@ const DetailContent = ({ data, detail, images }) => {
   if (images && images[0]) {
     bg = `https://image.tmdb.org/t/p/w500${images[0].file_path}`;
   }
-  if (detail) console.log(detail.Ratings[0].Value);
   const {
     content,
     title,

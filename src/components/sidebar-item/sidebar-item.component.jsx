@@ -21,7 +21,7 @@ const SidebarItem = ({ title, url, id }) => {
   };
 
   useEffect(() => {
-    if (pathname === '/search') {
+    if (pathname === '/search' || pathname === '/') {
       updateActive(null);
     }
   }, [pathname]);

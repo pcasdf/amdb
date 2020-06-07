@@ -57,14 +57,17 @@ const Carousel = ({ list, details }) => {
         )}
       </Grid>
       {list &&
-        list.map((each, idx) => (
-          <img
-            alt='hidden'
-            key={idx}
-            className={hidden}
-            src={`https://image.tmdb.org/t/p/w500${each.poster_path}`}
-          />
-        ))}
+        list.map(
+          (each, idx) =>
+            each.poster_path && (
+              <img
+                alt='hidden'
+                key={idx}
+                className={hidden}
+                src={`https://image.tmdb.org/t/p/w500${each.poster_path}`}
+              />
+            )
+        )}
     </Grid>
   );
 };

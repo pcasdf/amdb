@@ -25,6 +25,7 @@ const SearchResults = ({ match }) => {
         `https://api.themoviedb.org/3/search/multi?api_key=bada949f4005b48da2fb91c2ba013808&query=${input}&page=1`
       );
       setData(response.data.results);
+      console.log(response.data.results);
     } catch (err) {
       console.log('Something went wrong.');
     }
@@ -55,7 +56,12 @@ const SearchResults = ({ match }) => {
             <span className={head}>Search results for "{input || title}"</span>
           </Grid>
           {current &&
-            current.map(item => <Card key={item.id} theme={theme} {...item} />)}
+            current.map(
+              item =>
+                item.poster_path && (
+                  <Card key={item.id} theme={theme} {...item} />
+                )
+            )}
         </Grid>
       </Grid>
     </div>

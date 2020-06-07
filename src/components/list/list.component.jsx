@@ -39,9 +39,9 @@ const List = ({ data, fetchData, params, title, filter }) => {
           }
         >
           <Grid container spacing={3} style={{ marginTop: '10px' }}>
-            {data.map(item => (
-              <Card key={item.id} {...item} />
-            ))}
+            {data.map(
+              item => item.poster_path && <Card key={item.id} {...item} />
+            )}
           </Grid>
         </InfiniteScroll>
       </Grid>

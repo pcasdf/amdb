@@ -15,14 +15,17 @@ const Cast = ({ cast }) => {
         {cast &&
           cast
             .filter(each => each)
-            .map(({ name, id, profile_path }) => (
-              <Grid item xs={4} md={3} key={id} className={profile}>
-                <Link to={`/people/${id}`}>
-                  <Poster img={profile_path} style={{ margin: '0 auto' }} />
-                  <span className={label}>{name}</span>
-                </Link>
-              </Grid>
-            ))}
+            .map(
+              ({ name, id, profile_path }) =>
+                profile_path && (
+                  <Grid item xs={4} md={3} key={id} className={profile}>
+                    <Link to={`/people/${id}`}>
+                      <Poster img={profile_path} style={{ margin: '0 auto' }} />
+                      <span className={label}>{name}</span>
+                    </Link>
+                  </Grid>
+                )
+            )}
       </Grid>
     </div>
   );

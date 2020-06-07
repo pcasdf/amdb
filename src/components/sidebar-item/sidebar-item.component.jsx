@@ -24,6 +24,7 @@ const SidebarItem = ({ title, url, id }) => {
     if (pathname === '/search' || pathname === '/') {
       updateActive(null);
     }
+    // eslint-disable-next-line
   }, [pathname]);
 
   return (

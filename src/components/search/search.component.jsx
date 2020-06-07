@@ -14,6 +14,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     setContext({ input });
+    // eslint-disable-next-line
   }, [input]);
 
   const handleChange = e => {

@@ -37,6 +37,7 @@ const People = () => {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line
   }, [id]);
 
   const { body, button } = useStyles();

@@ -32,10 +32,12 @@ const SearchResults = ({ match }) => {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line
   }, [input]);
 
   useEffect(() => {
     setContext({ current: data, input: input });
+    // eslint-disable-next-line
   }, [data, input]);
 
   const { body, head, content } = useStyles();

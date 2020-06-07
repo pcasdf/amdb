@@ -64,6 +64,7 @@ const Detail = () => {
     if (cast) {
       cast.forEach(each => fetchCast(each));
     }
+    // eslint-disable-next-line
   }, [cast]);
 
   const { body, tabs } = useStyles();

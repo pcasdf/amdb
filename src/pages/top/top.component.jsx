@@ -37,6 +37,7 @@ const TopRated = () => {
     setPage(1);
     setData([]);
     fetchData();
+    // eslint-disable-next-line
   }, [category]);
 
   useEffect(() => {

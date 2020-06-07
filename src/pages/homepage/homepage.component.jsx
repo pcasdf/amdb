@@ -35,6 +35,7 @@ const HomePage = () => {
       movies: movies,
       tv: tvSeries
     });
+    // eslint-disable-next-line
   }, []);
 
   const {

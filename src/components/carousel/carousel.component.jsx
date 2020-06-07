@@ -57,9 +57,10 @@ const Carousel = ({ list, details }) => {
         )}
       </Grid>
       {list &&
-        list.map(each => (
+        list.map((each, idx) => (
           <img
             alt='hidden'
+            key={idx}
             className={hidden}
             src={`https://image.tmdb.org/t/p/w500${each.poster_path}`}
           />

@@ -2,11 +2,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles({
   profile: {
-    height: '100px'
+    height: '60vw'
   },
   info: {
     paddingLeft: '4vw',
-    paddingTop: '30px',
     fontSize: '.9rem'
   },
   label: {

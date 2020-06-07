@@ -18,7 +18,7 @@ const SearchBar = () => {
   }, [input]);
 
   const handleChange = e => {
-    if (input === '') {
+    if (input.length > 1) {
       push('/search');
     }
     setInput(e.target.value);

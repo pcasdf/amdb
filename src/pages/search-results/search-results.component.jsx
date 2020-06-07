@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import { Grid, Hidden } from '@material-ui/core';
@@ -18,6 +18,7 @@ const SearchResults = ({ match }) => {
   } = useContext(ResultsContext);
   const { theme } = useContext(ThemeContext);
   const { title } = useParams();
+  const { push } = useHistory();
 
   const fetchData = useCallback(async () => {
     try {
@@ -32,7 +33,11 @@ const SearchResults = ({ match }) => {
   }, [input]);
 
   useEffect(() => {
-    fetchData();
+    if (input === '' || !input) {
+      push('/');
+    } else {
+      fetchData();
+    }
     // eslint-disable-next-line
   }, [input]);
 

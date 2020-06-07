@@ -45,7 +45,6 @@ const DetailTabs = ({ images, recs, trailer, castData }) => {
       });
     }
     setLastChecked(target);
-    window.scroll(0, document.body.scrollHeight - 1000);
   };
 
   return (

@@ -18,7 +18,7 @@
 
 ### Overview
 
-**aMDB**
+**aMDB**<br>
 https://unruffled-curran-775cfe.netlify.app/
 
 **aMDB** is a TV and movie database single page application that allows users to search for a show and see its ratings, reviews, summary, and other details. It also offers lists for what is trending in certain categories and by specific time frames, and a suggestion feature for when you can't decide what to watch.
@@ -53,11 +53,14 @@ aMDB will offer search functionality to find details about the requested movie o
 
 #### Libraries
 
-|   Library    | Description                                                           |
-| :----------: | :-------------------------------------------------------------------- |
-| React Router | _Allow for routing to different pages of the app without page reload_ |
-| Material UI  | _Nice UI component library for more stremalined interface_            |
-|    Axios     | _Nice library for making HTTP requests_                               |
+|        Library        | Description                                                               |
+| :-------------------: | :------------------------------------------------------------------------ |
+|     React Router      | _Allow for routing to different pages of the app without page reload_     |
+|      Material UI      | _Nice UI component library for more stremalined interface_                |
+|         Axios         | _Nice library for making HTTP requests_                                   |
+| React Infinite Scroll | _Nice library for incrementally rendering large amounts of data_          |
+| React Loader Spinner  | _Nice library for rendering a loading spinner when loading state is true_ |
+|   React View Slider   | _Nice library for implementing a sliding carousel_                        |
 
 <br>
 
@@ -161,20 +164,12 @@ src
 
 | Task         | Priority | Estimated Time | Time Invested | Actual Time |
 | ------------ | :------: | :------------: | :-----------: | :---------: |
-| CSS          |    H     |     10 hrs     |      TBD      |     TBD     |
-| UI Interface |    H     |     10 hrs     |      TBD      |     TBD     |
-| Search       |    H     |     7 hrs      |      TBD      |     TBD     |
-| Routing      |    H     |     2 hrs      |      TBD      |     TBD     |
-| HTML         |    H     |      1 hr      |      TBD      |     TBD     |
-| TOTAL        |          |     30 hrs     |      TBD      |     TBD     |
-
-<br>
-
-#### Helper Functions
-
-|  Function  | Description                                 |
-| :--------: | :------------------------------------------ |
-| Form Input | _A custom hook for controlling form inputs_ |
+| CSS          |    H     |     10 hrs     |    10 hrs     |   10 hrs    |
+| UI Interface |    H     |     10 hrs     |    14 hrs     |   14 hrs    |
+| Search       |    H     |     7 hrs      |     2 hrs     |    2 hrs    |
+| Routing      |    H     |     2 hrs      |     3 hrs     |    3 hrs    |
+| HTML         |    H     |      1 hr      |     1 hr      |    1 hr     |
+| TOTAL        |          |     30 hrs     |    30 hrs     |   30 hrs    |
 
 <br>
 
@@ -191,8 +186,28 @@ src
 
 ### Code Showcase
 
+This is an event handler function that I had previously written with 4x the amount of code, but Mike helped me refactor it down to the much simpler and more efficient version that's shown here.
+
 ```
-code snippet here
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    const target = event.target.innerText;
+    if (lastChecked === '') {
+      setChecked({
+        ...checked,
+        [target]: true
+      });
+    } else {
+      setChecked({
+        ...checked,
+        [lastChecked]: false,
+        [target]: true
+      });
+    }
+    setLastChecked(target);
+  };
 ```
 
 ### Code Issues & Resolutions
+
+This project was a tremendous learning experience in using Material UI, setting up dynamic routes, and properly structuring my component hierarchy to take advantage of the routes that I had set up. I didn't stumble across any major issues during development, but I had to read a lot of documentation to learn how to use some of the libraries that I ended up using for transition effects.

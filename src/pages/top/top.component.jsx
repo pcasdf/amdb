@@ -7,7 +7,7 @@ import { ResultsContext } from '../../contexts/results/results.context';
 import List from '../../components/list/list.component';
 
 const TopRated = () => {
-  const KEY = `${process.env.REACT_APP_KEY}`;
+  const KEY = `bada949f4005b48da2fb91c2ba013808`;
 
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);

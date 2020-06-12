@@ -11,7 +11,7 @@ import Card from '../../components/card/card.component';
 import Sidebar from '../../components/sidebar/sidebar.component';
 
 const SearchResults = ({ match }) => {
-  const KEY = `${process.env.REACT_APP_KEY}`;
+  const KEY = `bada949f4005b48da2fb91c2ba013808`;
 
   const [data, setData] = useState([]);
   const {

@@ -7,7 +7,7 @@ import DetailContent from '../../components/detail-content/detail-content.compon
 import DetailTabs from '../../components/detail-tabs/detail-tabs.component';
 
 const Detail = () => {
-  const KEY = `bada949f4005b48da2fb91c2ba013808`;
+  const KEY = `${process.env.REACT_APP_KEY}`;
   console.log(KEY);
 
   const [data, setData] = useState();

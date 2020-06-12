@@ -11,6 +11,8 @@ import Card from '../../components/card/card.component';
 import Sidebar from '../../components/sidebar/sidebar.component';
 
 const SearchResults = ({ match }) => {
+  const KEY = `${process.env.REACT_APP_KEY}`;
+
   const [data, setData] = useState([]);
   const {
     context: { current, input },
@@ -23,7 +25,7 @@ const SearchResults = ({ match }) => {
   const fetchData = useCallback(async () => {
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/search/multi?api_key=bada949f4005b48da2fb91c2ba013808&query=${input}&page=1`
+        `https://api.themoviedb.org/3/search/multi?api_key=${KEY}&query=${input}&page=1`
       );
       setData(response.data.results);
     } catch (err) {

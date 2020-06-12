@@ -7,6 +7,9 @@ import DetailContent from '../../components/detail-content/detail-content.compon
 import DetailTabs from '../../components/detail-tabs/detail-tabs.component';
 
 const Detail = () => {
+  const KEY = `${process.env.REACT_APP_KEY}`;
+  console.log(KEY);
+
   const [data, setData] = useState();
   const [detail, setDetail] = useState();
   const [images, setImages] = useState();
@@ -19,19 +22,19 @@ const Detail = () => {
   const fetchDetails = useCallback(async () => {
     try {
       const movie = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=bada949f4005b48da2fb91c2ba013808`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${KEY}`
       );
       const response = await axios.get(
         `https://www.omdbapi.com/?apikey=fdbaa0a9&i=${movie.data.imdb_id}`
       );
       const images = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}/images?api_key=bada949f4005b48da2fb91c2ba013808`
+        `https://api.themoviedb.org/3/movie/${id}/images?api_key=${KEY}`
       );
       const recommends = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=bada949f4005b48da2fb91c2ba013808`
+        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${KEY}`
       );
       const vid = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}/videos?api_key=bada949f4005b48da2fb91c2ba013808`
+        `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${KEY}`
       );
       setData(movie.data);
       setDetail(response.data);
@@ -49,7 +52,7 @@ const Detail = () => {
   const fetchCast = async name => {
     if (cast) {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/search/person?api_key=bada949f4005b48da2fb91c2ba013808&language=en-US&query=${name}&page=1&include_adult=false`
+        `https://api.themoviedb.org/3/search/person?api_key=${KEY}&language=en-US&query=${name}&page=1&include_adult=false`
       );
       setCastData(prev => [...prev, response.data.results[0]]);
     }

@@ -10,6 +10,8 @@ import Personal from '../../components/personal/personal.component';
 import Photos from '../../components/photos/photos.component';
 
 const People = () => {
+  const KEY = `${process.env.REACT_APP_KEY}`;
+
   const [data, setData] = useState();
   const [otherData, setOtherData] = useState();
   const [images, setImages] = useState();
@@ -19,13 +21,13 @@ const People = () => {
   const fetchData = async () => {
     try {
       const details = await axios.get(
-        `https://api.themoviedb.org/3/person/${id}?api_key=bada949f4005b48da2fb91c2ba013808&language=en-US`
+        `https://api.themoviedb.org/3/person/${id}?api_key=${KEY}&language=en-US`
       );
       const otherDetails = await axios.get(
-        `https://api.themoviedb.org/3/search/person?api_key=bada949f4005b48da2fb91c2ba013808&language=en-US&query=${details.data.name}&page=1&include_adult=false`
+        `https://api.themoviedb.org/3/search/person?api_key=${KEY}&language=en-US&query=${details.data.name}&page=1&include_adult=false`
       );
       const imageData = await axios.get(
-        `https://api.themoviedb.org/3/person/${id}/images?api_key=bada949f4005b48da2fb91c2ba013808`
+        `https://api.themoviedb.org/3/person/${id}/images?api_key=${KEY}`
       );
       setData(details.data);
       setOtherData(otherDetails.data.results[0]);

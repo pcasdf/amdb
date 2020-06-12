@@ -7,6 +7,8 @@ import { ResultsContext } from '../../contexts/results/results.context';
 import List from '../../components/list/list.component';
 
 const GenrePage = () => {
+  const KEY = `${process.env.REACT_APP_KEY}`;
+
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const { setContext } = useContext(ResultsContext);
@@ -17,7 +19,7 @@ const GenrePage = () => {
     async page => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/discover/movie?api_key=bada949f4005b48da2fb91c2ba013808&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${id}`
+          `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${id}`
         );
         setData(prev => [...prev, ...response.data.results]);
         setPage(prev => prev + 1);

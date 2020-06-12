@@ -9,6 +9,8 @@ import { ResultsContext } from '../../contexts/results/results.context';
 import List from '../../components/list/list.component';
 
 const Trending = () => {
+  const KEY = `${process.env.REACT_APP_KEY}`;
+
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const { setContext } = useContext(ResultsContext);
@@ -17,7 +19,7 @@ const Trending = () => {
   const fetchData = useCallback(async (category, time, page) => {
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/trending/${category}/${time}?api_key=bada949f4005b48da2fb91c2ba013808&page=${page}`
+        `https://api.themoviedb.org/3/trending/${category}/${time}?api_key=${KEY}&page=${page}`
       );
       setData(prev => [...prev, ...response.data.results]);
       setPage(prev => prev + 1);

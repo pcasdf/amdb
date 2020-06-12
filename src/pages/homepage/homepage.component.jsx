@@ -9,6 +9,8 @@ import Carousel from '../../components/carousel/carousel.component';
 import Sidebar from '../../components/sidebar/sidebar.component';
 
 const HomePage = () => {
+  const KEY = `${process.env.REACT_APP_KEY}`;
+
   const [movies, setMovies] = useState();
   const [tvSeries, setTvSeries] = useState();
   const { context, setContext } = useContext(ResultsContext);
@@ -16,10 +18,10 @@ const HomePage = () => {
   const fetchData = useCallback(async () => {
     try {
       const moviesResponse = await axios.get(
-        `https://api.themoviedb.org/3/trending/movie/week?api_key=bada949f4005b48da2fb91c2ba013808&page=1`
+        `https://api.themoviedb.org/3/trending/movie/week?api_key=${KEY}&page=1`
       );
       const tvSeriesResponse = await axios.get(
-        `https://api.themoviedb.org/3/trending/tv/week?api_key=bada949f4005b48da2fb91c2ba013808&page=1`
+        `https://api.themoviedb.org/3/trending/tv/week?api_key=${KEY}&page=1`
       );
       setMovies(moviesResponse.data.results);
       setTvSeries(tvSeriesResponse.data.results);

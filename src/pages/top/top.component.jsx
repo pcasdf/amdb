@@ -7,6 +7,8 @@ import { ResultsContext } from '../../contexts/results/results.context';
 import List from '../../components/list/list.component';
 
 const TopRated = () => {
+  const KEY = `${process.env.REACT_APP_KEY}`;
+
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [title, setTitle] = useState('');
@@ -17,7 +19,7 @@ const TopRated = () => {
     async page => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/${category}/top_rated?api_key=bada949f4005b48da2fb91c2ba013808&language=en-US&page=${page}`
+          `https://api.themoviedb.org/3/${category}/top_rated?api_key=${KEY}&language=en-US&page=${page}`
         );
         setData(prev => [...prev, ...response.data.results]);
         setPage(prev => prev + 1);

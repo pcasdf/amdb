@@ -1,34 +1,23 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 
+import { fetchGenres } from '../../utils/fetchData';
 import { useStyles } from './genre.styles';
 import { ResultsContext } from '../../contexts/results/results.context';
 import List from '../../components/list/list.component';
 
 const GenrePage = () => {
-  const KEY = `${process.env.REACT_APP_KEY}`;
-
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const { setContext } = useContext(ResultsContext);
   const { genre, id } = useParams();
   const [title, setTitle] = useState('');
 
-  const fetchData = useCallback(
-    async page => {
-      try {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${id}`
-        );
-        setData(prev => [...prev, ...response.data.results]);
-        setPage(prev => prev + 1);
-      } catch (err) {
-        console.log('Something went wrong.');
-      }
-    },
-    [id]
-  );
+  const fetchData = async (page, id) => {
+    const response = await fetchGenres(page, id);
+    setData(prev => [...prev, ...response.data.results]);
+    setPage(prev => prev + 1);
+  };
 
   useEffect(() => {
     if (genre === 'scifi') {
@@ -38,8 +27,9 @@ const GenrePage = () => {
     }
     setPage(1);
     setData([]);
-    fetchData();
-  }, [genre, id, fetchData]);
+    fetchData(page, id);
+    // eslint-disable-next-line
+  }, [genre, id]);
 
   useEffect(() => {
     setContext({ current: data, movies: null, tv: null });

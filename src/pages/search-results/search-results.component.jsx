@@ -1,18 +1,16 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import axios from 'axios';
 
 import { Grid, Hidden } from '@material-ui/core';
 
+import { fetchSearch } from '../../utils/fetchData';
 import { useStyles } from './search-results.styles';
 import { ThemeContext } from '../../contexts/theme/theme.context';
 import { ResultsContext } from '../../contexts/results/results.context';
 import Card from '../../components/card/card.component';
 import Sidebar from '../../components/sidebar/sidebar.component';
 
-const SearchResults = ({ match }) => {
-  const KEY = `${process.env.REACT_APP_KEY}`;
-
+const SearchResults = () => {
   const [data, setData] = useState([]);
   const {
     context: { current, input },
@@ -22,16 +20,10 @@ const SearchResults = ({ match }) => {
   const { title } = useParams();
   const { push } = useHistory();
 
-  const fetchData = useCallback(async () => {
-    try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/search/multi?api_key=${KEY}&query=${input}&page=1`
-      );
-      setData(response.data.results);
-    } catch (err) {
-      console.log('Something went wrong.');
-    }
-  }, [input]);
+  const fetchData = async () => {
+    const response = await fetchSearch(input);
+    setData(response.data.results);
+  };
 
   useEffect(() => {
     if (input === '' || !input) {
